@@ -1,14 +1,18 @@
 package com.tianbiaoge.example.fanruidemo.controller;
 
 import com.tianbiaoge.example.fanruidemo.Repository.IProjectRepository;
+import com.tianbiaoge.example.fanruidemo.constant.ExceptionConstant;
 import com.tianbiaoge.example.fanruidemo.domain.Project;
+import com.tianbiaoge.example.fanruidemo.domain.Result;
+import com.tianbiaoge.example.fanruidemo.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -29,6 +33,19 @@ public class ProjectController {
         }
         return "/list";
     }
+
+    /**
+     * @Describe 跳转到addnew.html页面
+     * @return
+     */
+    @GetMapping(value = "/add")
+    public String add(){
+
+        return "/addnew";
+
+    }
+
+
     //查询设计名称中的部分关键字跳转或者说是刷新该页面
     @RequestMapping(value = "/list", method = RequestMethod.POST)
     public String projectSearchList(@RequestParam("designName") String designName,
@@ -46,6 +63,21 @@ public class ProjectController {
         //应该有一个添加成功的提示
         return "redirect:/project/detail";
     }
+
+    @PostMapping("/save")
+    @ResponseBody
+    public Result save(@Valid Project project, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            return ResultUtil.error(ExceptionConstant.ERROR_CODE, ExceptionConstant.ERROR);
+        } else {
+            ;
+            return ResultUtil.success(this.iProjectRepository.save(project));
+        }
+
+    }
+
+
+
     //在list页面点击项目获得项目设计编号，读取该项目的具体内容并跳转到detail页面
     @RequestMapping(value = "/detail", method = RequestMethod.POST)
     public String projectDetail(@RequestParam("idProject") String idProject,
@@ -53,5 +85,18 @@ public class ProjectController {
         Project project = iProjectRepository.findByIdProject(idProject);
         //应该有一个添加成功的提示
         return "redirect:/project/detail";
+    }
+
+    /**
+     * @Describe 跳转到详情页面
+     * @param idProject
+     * @param modelMap
+     * @return
+     */
+    @GetMapping(value = "/viewDetail/{id}")
+    public String viewDetail(@PathVariable("id") String  idProject, ModelMap modelMap){
+        modelMap.put("idProject",idProject);
+        return "/detail";
+
     }
 }
