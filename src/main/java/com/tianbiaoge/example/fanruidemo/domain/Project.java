@@ -7,45 +7,50 @@ import java.util.Date;
 
 @Entity     //实体类，表示这个类对应数据库的一个表
 public class Project {
+    //基本信息
     @Id
-    @GeneratedValue //I 自增的注解
+    @GeneratedValue //Id序号 自增的注解
     private Integer id;
-    private String id_region;
-    private String id_project;
-    private String design_name;
-    private double text_design_fee;
-    private double hang_up_desgine_fee;
-    private String cooperation_unit;
-    private double hang_up_ration;
-    private double hang_up_discount;
-    private double return_discount;
-    private double subtotal;
-
-    private int hang_up_times;
-    private double hang_up_recp_total;
-    private double manage_fee;
-    private double land_tax	;
-    private double subtotal_of_hang_up;
-
-    private int account_times;
-    private double account_recp_total;
-
-    private double actual_design_fee;
-    private double cooperation_fee	;
-    private Date reach_money_time;
-    private double reach_money_amount;
-    private double balance;
-    private Date into_account_time;
-    private String contract_number;
-
-    private boolean is_deleted;
-    private Date start_time;
-    private String user;
-    private String addtional_info;
+    private String idRegion;   //所属区域
+    private String idProject;  //设计编号
+    private String designName; //设计名称
+    private double textDesignFee; //文本设计费
+    private double hangUpDesignFee; //院挂账设计费
+    private double approvedDesignFee; //审定设计费
+    private double differenceAmount;   //差额比对=院挂账设计费-审定设计费
+    private String cooperationUnit;    //协作单位
+    private double hangUpRation;  //挂账协作比例
+    private double projectSubtotal;    //小计
+//    //挂账后应有信息
+//    private double manageFee;  //管理费
+//    private double landTax	;   //地税
+//    private double ProjectSubtotal;    //挂账小计
+//    //后续信息
+//    private double paymentAmount;  //院本次付款金额
+//    private double paymentRation;  //院付款比例
+//    private double actualReceiveAmount;   //实收金额
+//    private double receivableAmount;   //院项目应收余额
+//    private Date paymentTime;  //院付款时间
+//    private double cooperationPaymentAmount;  //协作单位本次付款金额
+//    private double returnedGuaranteee; //归还质保金
+//    private double cooperationPayableAmount;  //协作单位应付余额
+//    private double reachMoneyAmount;  //到账金额（繁睿）
+//    private Date intoAccountTime; //到账时间
+//    private String hangUpBatch;   //院挂账批次
+//    private double paymentBatch;   //付款批次
+//    private String hangOutCompany;    //挂账公司
+//    private boolean isChecked = false; //收款审核，默认未审核
+//    private Date publishedTime;    //出版时间
+//    //实体创建的相关信息
+//    private boolean isDeleted = false; //是否为删除状态，默认为假，后期确定到底需不需要
+//    private Date projectCreateTime;   //项目创建时间
+//    private String userName;   //创建项目的用户
+//    private String addtionalInfo;  //备注
     //必须要有一个无参的构造方法
     public Project(){
     }
     //构造方法和getter、setter方法都可以用构造器生成
+
     public Integer getId() {
         return id;
     }
@@ -54,227 +59,259 @@ public class Project {
         this.id = id;
     }
 
-    public String getId_region() {
-        return id_region;
+    public String getIdRegion() {
+        return idRegion;
     }
 
-    public void setId_region(String id_region) {
-        this.id_region = id_region;
+    public void setIdRegion(String idRegion) {
+        this.idRegion = idRegion;
     }
 
-    public String getId_project() {
-        return id_project;
+    public String getIdProject() {
+        return idProject;
     }
 
-    public void setId_project(String id_project) {
-        this.id_project = id_project;
+    public void setIdProject(String idProject) {
+        this.idProject = idProject;
     }
 
-    public String getDesign_name() {
-        return design_name;
+    public String getDesignName() {
+        return designName;
     }
 
-    public void setDesign_name(String design_name) {
-        this.design_name = design_name;
+    public void setDesignName(String designName) {
+        this.designName = designName;
     }
 
-    public double getText_design_fee() {
-        return text_design_fee;
+    public double getTextDesignFee() {
+        return textDesignFee;
     }
 
-    public void setText_design_fee(double text_design_fee) {
-        this.text_design_fee = text_design_fee;
+    public void setTextDesignFee(double textDesignFee) {
+        this.textDesignFee = textDesignFee;
     }
 
-    public double getHang_up_desgine_fee() {
-        return hang_up_desgine_fee;
+    public double getHangUpDesignFee() {
+        return hangUpDesignFee;
     }
 
-    public void setHang_up_desgine_fee(double hang_up_desgine_fee) {
-        this.hang_up_desgine_fee = hang_up_desgine_fee;
+    public void setHangUpDesignFee(double hangUpDesignFee) {
+        this.hangUpDesignFee = hangUpDesignFee;
     }
 
-    public String getCooperation_unit() {
-        return cooperation_unit;
+    public double getApprovedDesignFee() {
+        return approvedDesignFee;
     }
 
-    public void setCooperation_unit(String cooperation_unit) {
-        this.cooperation_unit = cooperation_unit;
+    public void setApprovedDesignFee(double approvedDesignFee) {
+        this.approvedDesignFee = approvedDesignFee;
     }
 
-    public double getHang_up_ration() {
-        return hang_up_ration;
+    public double getDifferenceAmount() {
+        return differenceAmount;
     }
 
-    public void setHang_up_ration(double hang_up_ration) {
-        this.hang_up_ration = hang_up_ration;
+    public void setDifferenceAmount(double differenceAmount) {
+        this.differenceAmount = differenceAmount;
     }
 
-    public double getHang_up_discount() {
-        return hang_up_discount;
+    public String getCooperationUnit() {
+        return cooperationUnit;
     }
 
-    public void setHang_up_discount(double hang_up_discount) {
-        this.hang_up_discount = hang_up_discount;
+    public void setCooperationUnit(String cooperationUnit) {
+        this.cooperationUnit = cooperationUnit;
     }
 
-    public double getReturn_discount() {
-        return return_discount;
+    public double getHangUpRation() {
+        return hangUpRation;
     }
 
-    public void setReturn_discount(double return_discount) {
-        this.return_discount = return_discount;
+    public void setHangUpRation(double hangUpRation) {
+        this.hangUpRation = hangUpRation;
     }
 
-    public double getSubtotal() {
-        return subtotal;
+    public double getProjectSubtotal() {
+        return projectSubtotal;
     }
 
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
+    public void setProjectSubtotal(double projectSubtotal) {
+        this.projectSubtotal = projectSubtotal;
     }
 
-    public int getHang_up_times() {
-        return hang_up_times;
-    }
+//    public double getManageFee() {
+//        return manageFee;
+//    }
+//
+//    public void setManageFee(double manageFee) {
+//        this.manageFee = manageFee;
+//    }
+//
+//    public double getLandTax() {
+//        return landTax;
+//    }
+//
+//    public void setLandTax(double landTax) {
+//        this.landTax = landTax;
+//    }
+//
+//    public double getHangUpSubtotal() {
+//        return hangUpSubtotal;
+//    }
+//
+//    public void setHangUpSubtotal(double hangUpSubtotal) {
+//        this.hangUpSubtotal = hangUpSubtotal;
+//    }
 
-    public void setHang_up_times(int hang_up_times) {
-        this.hang_up_times = hang_up_times;
-    }
-
-    public double getHang_up_recp_total() {
-        return hang_up_recp_total;
-    }
-
-    public void setHang_up_recp_total(double hang_up_recp_total) {
-        this.hang_up_recp_total = hang_up_recp_total;
-    }
-
-    public double getManage_fee() {
-        return manage_fee;
-    }
-
-    public void setManage_fee(double manage_fee) {
-        this.manage_fee = manage_fee;
-    }
-
-    public double getLand_tax() {
-        return land_tax;
-    }
-
-    public void setLand_tax(double land_tax) {
-        this.land_tax = land_tax;
-    }
-
-    public double getSubtotal_of_hang_up() {
-        return subtotal_of_hang_up;
-    }
-
-    public void setSubtotal_of_hang_up(double subtotal_of_hang_up) {
-        this.subtotal_of_hang_up = subtotal_of_hang_up;
-    }
-
-    public int getAccount_times() {
-        return account_times;
-    }
-
-    public void setAccount_times(int account_times) {
-        this.account_times = account_times;
-    }
-
-    public double getAccount_recp_total() {
-        return account_recp_total;
-    }
-
-    public void setAccount_recp_total(double account_recp_total) {
-        this.account_recp_total = account_recp_total;
-    }
-
-    public double getActual_design_fee() {
-        return actual_design_fee;
-    }
-
-    public void setActual_design_fee(double actual_design_fee) {
-        this.actual_design_fee = actual_design_fee;
-    }
-
-    public double getCooperation_fee() {
-        return cooperation_fee;
-    }
-
-    public void setCooperation_fee(double cooperation_fee) {
-        this.cooperation_fee = cooperation_fee;
-    }
-
-    public Date getReach_money_time() {
-        return reach_money_time;
-    }
-
-    public void setReach_money_time(Date reach_money_time) {
-        this.reach_money_time = reach_money_time;
-    }
-
-    public double getReach_money_amount() {
-        return reach_money_amount;
-    }
-
-    public void setReach_money_amount(double reach_money_amount) {
-        this.reach_money_amount = reach_money_amount;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    public Date getInto_account_time() {
-        return into_account_time;
-    }
-
-    public void setInto_account_time(Date into_account_time) {
-        this.into_account_time = into_account_time;
-    }
-
-    public String getContract_number() {
-        return contract_number;
-    }
-
-    public void setContract_number(String contract_number) {
-        this.contract_number = contract_number;
-    }
-
-    public boolean isIs_deleted() {
-        return is_deleted;
-    }
-
-    public void setIs_deleted(boolean is_deleted) {
-        this.is_deleted = is_deleted;
-    }
-
-    public Date getStart_time() {
-        return start_time;
-    }
-
-    public void setStart_time(Date start_time) {
-        this.start_time = start_time;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public String getAddtional_info() {
-        return addtional_info;
-    }
-
-    public void setAddtional_info(String addtional_info) {
-        this.addtional_info = addtional_info;
-    }
+//    public double getPaymentAmount() {
+//        return paymentAmount;
+//    }
+//
+//    public void setPaymentAmount(double paymentAmount) {
+//        this.paymentAmount = paymentAmount;
+//    }
+//
+//    public double getPaymentRation() {
+//        return paymentRation;
+//    }
+//
+//    public void setPaymentRation(double paymentRation) {
+//        this.paymentRation = paymentRation;
+//    }
+//
+//    public double getActualReceiveAmount() {
+//        return actualReceiveAmount;
+//    }
+//
+//    public void setActualReceiveAmount(double actualReceiveAmount) {
+//        this.actualReceiveAmount = actualReceiveAmount;
+//    }
+//
+//    public double getReceivableAmount() {
+//        return receivableAmount;
+//    }
+//
+//    public void setReceivableAmount(double receivableAmount) {
+//        this.receivableAmount = receivableAmount;
+//    }
+//
+//    public Date getPaymentTime() {
+//        return paymentTime;
+//    }
+//
+//    public void setPaymentTime(Date paymentTime) {
+//        this.paymentTime = paymentTime;
+//    }
+//
+//    public double getCooperationPaymentAmount() {
+//        return cooperationPaymentAmount;
+//    }
+//
+//    public void setCooperationPaymentAmount(double cooperationPaymentAmount) {
+//        this.cooperationPaymentAmount = cooperationPaymentAmount;
+//    }
+//
+//    public double getReturnedGuaranteee() {
+//        return returnedGuaranteee;
+//    }
+//
+//    public void setReturnedGuaranteee(double returnedGuaranteee) {
+//        this.returnedGuaranteee = returnedGuaranteee;
+//    }
+//
+//    public double getCooperationPayableAmount() {
+//        return cooperationPayableAmount;
+//    }
+//
+//    public void setCooperationPayableAmount(double cooperationPayableAmount) {
+//        this.cooperationPayableAmount = cooperationPayableAmount;
+//    }
+//
+//    public double getReachMoneyAmount() {
+//        return reachMoneyAmount;
+//    }
+//
+//    public void setReachMoneyAmount(double reachMoneyAmount) {
+//        this.reachMoneyAmount = reachMoneyAmount;
+//    }
+//
+//    public Date getIntoAccountTime() {
+//        return intoAccountTime;
+//    }
+//
+//    public void setIntoAccountTime(Date intoAccountTime) {
+//        this.intoAccountTime = intoAccountTime;
+//    }
+//
+//    public String getHangUpBatch() {
+//        return hangUpBatch;
+//    }
+//
+//    public void setHangUpBatch(String hangUpBatch) {
+//        this.hangUpBatch = hangUpBatch;
+//    }
+//
+//    public double getPaymentBatch() {
+//        return paymentBatch;
+//    }
+//
+//    public void setPaymentBatch(double paymentBatch) {
+//        this.paymentBatch = paymentBatch;
+//    }
+//
+//    public String getHangOutCompany() {
+//        return hangOutCompany;
+//    }
+//
+//    public void setHangOutCompany(String hangOutCompany) {
+//        this.hangOutCompany = hangOutCompany;
+//    }
+//
+//    public boolean isChecked() {
+//        return isChecked;
+//    }
+//
+//    public void setChecked(boolean checked) {
+//        isChecked = checked;
+//    }
+//
+//    public Date getPublishedTime() {
+//        return publishedTime;
+//    }
+//
+//    public void setPublishedTime(Date publishedTime) {
+//        this.publishedTime = publishedTime;
+//    }
+//
+//    public boolean isDeleted() {
+//        return isDeleted;
+//    }
+//
+//    public void setDeleted(boolean deleted) {
+//        isDeleted = deleted;
+//    }
+//
+//    public Date getProjectCreateTime() {
+//        return projectCreateTime;
+//    }
+//
+//    public void setProjectCreateTime(Date projectCreateTime) {
+//        this.projectCreateTime = projectCreateTime;
+//    }
+//
+//    public String getUserName() {
+//        return userName;
+//    }
+//
+//    public void setUserName(String userName) {
+//        this.userName = userName;
+//    }
+//
+//    public String getAddtionalInfo() {
+//        return addtionalInfo;
+//    }
+//
+//    public void setAddtionalInfo(String addtionalInfo) {
+//        this.addtionalInfo = addtionalInfo;
+//    }
 }

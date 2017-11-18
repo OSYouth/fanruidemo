@@ -15,6 +15,7 @@ public class User{
 
     private String password;
 
+    private Date createTime;
 
     public User() {
     }
@@ -41,5 +42,13 @@ public class User{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }
