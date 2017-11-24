@@ -1,21 +1,14 @@
 package com.tianbiaoge.example.fanruidemo.util;
 
-
-
-/**
- * @Describe 结果集工具类
- * @Author dengchangneng
- * @CreateTime 2017年10月8日11:52:24
- */
-
 import com.tianbiaoge.example.fanruidemo.constant.ExceptionConstant;
 import com.tianbiaoge.example.fanruidemo.domain.Result;
 
 /**
- * Created by thinkive on 2017/10/11.
+ * @Describe 结果集工具类
+ * @Author lc
+ * @CreateTime 2017/11/23
  */
 public class ResultUtil {
-
 
     /**
      * @param object 数据

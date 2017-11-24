@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * @Describe 以前为了写demo测试的控制类
+ */
 @Controller
 public class HelloController {
 //

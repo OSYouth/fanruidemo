@@ -2,8 +2,8 @@ package com.tianbiaoge.example.fanruidemo.constant;
 
 /**
  * @Describe 错误类型常量类
- * @auther dengchangneng
- * @createTime 2017年11月1日14:11:06
+ * @auther lc
+ * @createTime 2017/11/23
  */
 public class ExceptionConstant {
 
@@ -19,9 +19,5 @@ public class ExceptionConstant {
     public static final Integer SUCCESS_CODE=0;
 
     public static final String SUCCESS="成功";
-
-
-
-
 
 }

@@ -8,7 +8,6 @@ import com.tianbiaoge.example.fanruidemo.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +17,7 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/project")
 public class ProjectController {
+    @Autowired
     private IProjectRepository iProjectRepository;
 
     @Autowired
@@ -90,12 +90,14 @@ public class ProjectController {
     /**
      * @Describe 跳转到详情页面
      * @param idProject
-     * @param modelMap
+     * @param model
      * @return
      */
     @GetMapping(value = "/viewDetail/{id}")
-    public String viewDetail(@PathVariable("id") String  idProject, ModelMap modelMap){
-        modelMap.put("idProject",idProject);
+    public String viewDetail(@PathVariable("id") String  idProject,  Model model){
+
+        Project project = iProjectRepository.findByIdProject(idProject);
+        model.addAttribute("projectDetail",project);
         return "/detail";
 
     }

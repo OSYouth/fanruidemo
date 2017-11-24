@@ -1,0 +1,13 @@
+server:
+  port: 8443
+  ssl:
+    key-store: classpath:mykeys.jks
+    key-store-password: letmein
+    key-password: letmein
+logging:
+  path: D:\Java\fanrui\fanruidemowithDCN\loggin
+#  日志文件路径制定还需要一定的显示配置，不然好像会默认放到哪里，还是两次配置后面的会刷新覆盖掉前面的配置
+  file: runlog2.log
+  level:
+    root: WARN
+    org.springframework.security: DEBUG

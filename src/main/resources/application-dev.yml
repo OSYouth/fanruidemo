@@ -1,0 +1,6 @@
+server:
+  port: 8001
+  ssl:
+    key-store: classpath:mykeys.jks
+    key-store-password: letmein
+    key-password: letmein

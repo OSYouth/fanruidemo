@@ -1,21 +1,21 @@
 package com.tianbiaoge.example.fanruidemo.domain;
 
 /**
- * @Describe 错误类
- * @Author dengchangneng
- * @CreateTime 2017年10月11日11:15:10
+ * @Describe 结果(错误)类
+ * @Author lc
+ * @CreateTime 2017/11/23
  */
 public class Result<T> {
 
-    /** 错误码. */
-    private Integer code;
+    private Integer code;    /** 错误码. */
 
-    /** 提示信息. */
-    private String msg;
+    private String msg;   /** 提示信息. */
 
-    /** 具体的内容. */
-    private T data;
+    private T data;    /** 具体的内容. */
 
+    /**
+     * @Describe 这个类里面各个变量的setter和getter方法
+     */
     public Integer getCode() {
         return code;
     }

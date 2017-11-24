@@ -5,7 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
 
-@Entity     //实体类，表示这个类对应数据库的一个表
+/**
+ * @Describe 每个项目的实体类，与之相对应的是数据库的一个表
+ * @Author lc
+ * @CreateTime 2017/11/23
+ */
+@Entity
 public class Project {
     //基本信息
     @Id
@@ -46,11 +51,15 @@ public class Project {
 //    private Date projectCreateTime;   //项目创建时间
 //    private String userName;   //创建项目的用户
 //    private String addtionalInfo;  //备注
-    //必须要有一个无参的构造方法
+    /**
+     * @Describe 必须要有一个无参的构造方法
+     */
     public Project(){
     }
-    //构造方法和getter、setter方法都可以用构造器生成
 
+    /**
+     * @Describe 这个类里面各个变量的setter和getter方法
+     */
     public Integer getId() {
         return id;
     }
