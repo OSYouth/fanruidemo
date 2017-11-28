@@ -40,9 +40,7 @@ public class ProjectController {
      */
     @GetMapping(value = "/add")
     public String add(){
-
         return "/addnew";
-
     }
 
 
