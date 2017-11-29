@@ -24,8 +24,13 @@ public class ProjectController {
     public ProjectController(IProjectRepository iProjectRepository){
         this.iProjectRepository = iProjectRepository;
     }
-    //子栏目“项目”，点击后给出全部的项目清单，页面有添加新项目，通过关键字查找等功能
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+
+    /**
+     * @Describe 子栏目“项目”，点击后给出全部的项目清单，页面有添加新项目，通过关键字查找等功能
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public String projectList(Model model){
         List<Project> projectList = iProjectRepository.findAll();
         if(projectList != null){
@@ -35,7 +40,7 @@ public class ProjectController {
     }
 
     /**
-     * @Describe 跳转到addnew.html页面
+     * @Describe 跳转到addnew.html
      * @return
      */
     @GetMapping(value = "/add")
