@@ -1,7 +1,11 @@
 package com.tianbiaoge.example.fanruidemo.controller;
 
+import com.tianbiaoge.example.fanruidemo.Repository.ICompanyAccountRepository;
+import com.tianbiaoge.example.fanruidemo.Repository.IHangUpRepository;
 import com.tianbiaoge.example.fanruidemo.Repository.IProjectRepository;
 import com.tianbiaoge.example.fanruidemo.constant.ExceptionConstant;
+import com.tianbiaoge.example.fanruidemo.domain.CompanyAccount;
+import com.tianbiaoge.example.fanruidemo.domain.HangUp;
 import com.tianbiaoge.example.fanruidemo.domain.Project;
 import com.tianbiaoge.example.fanruidemo.domain.Result;
 import com.tianbiaoge.example.fanruidemo.util.ResultUtil;
@@ -19,10 +23,16 @@ import java.util.List;
 public class ProjectController {
     @Autowired
     private IProjectRepository iProjectRepository;
+    @Autowired
+    private IHangUpRepository iHangUpRepository;
+    @Autowired
+    private ICompanyAccountRepository iCompanyAccountRepository;
 
     @Autowired
-    public ProjectController(IProjectRepository iProjectRepository){
+    public ProjectController(IProjectRepository iProjectRepository, IHangUpRepository iHangUpRepository, ICompanyAccountRepository iCompanyAccountRepository){
         this.iProjectRepository = iProjectRepository;
+        this.iHangUpRepository = iHangUpRepository;
+        this.iCompanyAccountRepository = iCompanyAccountRepository;
     }
 
     /**
@@ -30,7 +40,7 @@ public class ProjectController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String projectList(Model model){
         List<Project> projectList = iProjectRepository.findAll();
         if(projectList != null){
@@ -48,60 +58,102 @@ public class ProjectController {
         return "/addnew";
     }
 
-
-    //查询设计名称中的部分关键字跳转或者说是刷新该页面
-    @RequestMapping(value = "/list", method = RequestMethod.POST)
-    public String projectSearchList(@RequestParam("designName") String designName,
-                                    Model model){
-        List<Project> projectResultList = iProjectRepository.findByDesignName(designName);
-        if(projectResultList != null){
-            model.addAttribute("resultProjects", projectResultList);
+    /**
+     * @Describe 跳转到详情页面
+     * @param id
+     * @param model
+     * @return
+     */
+    @GetMapping(value = "/viewDetail/id={id}")
+    public String viewDetail(@PathVariable("id") Integer  id, Model modelProject, Model modelHangUp, Model modelCompanyAccount){
+        Project project = iProjectRepository.findById(id);
+        modelProject.addAttribute("projectDetail",project);
+        List<HangUp> hangUpList = iHangUpRepository.findAllByIdProject(project.getIdProject());
+        if(hangUpList != null){
+            modelHangUp.addAttribute("allHangUps", hangUpList);
         }
-        return "redirect:/project/list";
-    }
-    //添加新项目的页面，通过在list的“添加”按钮跳转到此页面
-    @RequestMapping(value = "/addnew", method = RequestMethod.POST)
-    public String addNewProject(Project project){
-        iProjectRepository.save(project);
-        //应该有一个添加成功的提示
-        return "redirect:/project/detail";
+        List<CompanyAccount> companyAccountList = iCompanyAccountRepository.findAllByIdProject(project.getIdProject());
+        if(companyAccountList != null){
+            modelCompanyAccount.addAttribute("allCompanyAccounts", companyAccountList);
+        }
+        return "/detail";
     }
 
-    @PostMapping("/save")
+    /**
+     * @Describe 用来反应添加项目成功与否的信息
+     * @param project
+     * @param bindingResult
+     * @return
+     */
+    @PostMapping("/saveProject")
     @ResponseBody
-    public Result save(@Valid Project project, BindingResult bindingResult){
+    public Result saveProject(@Valid Project project, BindingResult bindingResult){
         if (bindingResult.hasErrors()) {
             return ResultUtil.error(ExceptionConstant.ERROR_CODE, ExceptionConstant.ERROR);
         } else {
             ;
             return ResultUtil.success(this.iProjectRepository.save(project));
         }
-
-    }
-
-
-
-    //在list页面点击项目获得项目设计编号，读取该项目的具体内容并跳转到detail页面
-    @RequestMapping(value = "/detail", method = RequestMethod.POST)
-    public String projectDetail(@RequestParam("idProject") String idProject,
-                                Model model){
-        Project project = iProjectRepository.findByIdProject(idProject);
-        //应该有一个添加成功的提示
-        return "redirect:/project/detail";
     }
 
     /**
-     * @Describe 跳转到详情页面
-     * @param idProject
-     * @param model
+     * @Describe 用来反应添加挂账成功与否的信息
+     * @param hangUp
+     * @param bindingResult
      * @return
      */
-    @GetMapping(value = "/viewDetail/{id}")
-    public String viewDetail(@PathVariable("id") String  idProject,  Model model){
-
-        Project project = iProjectRepository.findByIdProject(idProject);
-        model.addAttribute("projectDetail",project);
-        return "/detail";
-
+    @PostMapping("/saveHangUp")
+    @ResponseBody
+    public Result saveHangUp(@Valid HangUp hangUp, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            return ResultUtil.error(ExceptionConstant.ERROR_CODE, ExceptionConstant.ERROR);
+        } else {
+            ;
+            return ResultUtil.success(this.iHangUpRepository.save(hangUp));
+        }
     }
+    /**
+     * @Describe 用来反应添加挂账成功与否的信息
+     * @param companyAccount
+     * @param bindingResult
+     * @return
+     */
+    @PostMapping("/saveCompanyAccount")
+    @ResponseBody
+    public Result saveCompanyAccount(@Valid CompanyAccount companyAccount, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            return ResultUtil.error(ExceptionConstant.ERROR_CODE, ExceptionConstant.ERROR);
+        } else {
+            ;
+            return ResultUtil.success(this.iCompanyAccountRepository.save(companyAccount));
+        }
+    }
+//    这部分已经通过前端实现了
+// 查询设计名称中的部分关键字跳转或者说是刷新该页面
+//    @RequestMapping(value = "/list", method = RequestMethod.POST)
+//    public String projectSearchList(@RequestParam("designName") String designName,
+//                                    Model model){
+//        List<Project> projectResultList = iProjectRepository.findByDesignName(designName);
+//        if(projectResultList != null){
+//            model.addAttribute("resultProjects", projectResultList);
+//        }
+//        return "redirect:/project/list";
+//    }
+    //添加新项目的页面，通过在list的“添加”按钮跳转到此页面
+//    @RequestMapping(value = "/addnew", method = RequestMethod.POST)
+//    public String addNewProject(Project project){
+//        iProjectRepository.save(project);
+//        //应该有一个添加成功的提示
+//        return "redirect:/project/detail";
+//    }
+
+//    //在list页面点击项目获得项目设计编号，读取该项目的具体内容并跳转到detail页面
+//    @RequestMapping(value = "/detail", method = RequestMethod.POST)
+//    public String projectDetail(@RequestParam("idProject") String idProject,
+//                                Model model){
+//        Project project = iProjectRepository.findByIdProject(idProject);
+//        //应该有一个添加成功的提示
+//        return "redirect:/project/detail";
+//    }
+
 }

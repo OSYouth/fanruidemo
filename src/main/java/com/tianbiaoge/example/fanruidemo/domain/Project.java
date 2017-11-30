@@ -29,7 +29,7 @@ public class Project {
 //    //挂账后应有信息
 //    private double manageFee;  //管理费
 //    private double landTax	;   //地税
-//    private double ProjectSubtotal;    //挂账小计
+//    private double HangUpSubtotal;    //挂账小计
 //    //后续信息
 //    private double paymentAmount;  //院本次付款金额
 //    private double paymentRation;  //院付款比例

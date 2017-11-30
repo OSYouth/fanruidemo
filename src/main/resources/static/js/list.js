@@ -5,7 +5,8 @@ $(function(){
     $("#addBtn").click(function(){
         window.location.href="/project/add";
     });
-    $("").click(function(){
-        window.location.href="project/viewDetail/"
-    });
 })
+
+function viewDetail(id){
+    window.location.href="/project/viewDetail/id=" + id;
+}
