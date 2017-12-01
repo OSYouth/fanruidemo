@@ -61,7 +61,7 @@ public class ProjectController {
     /**
      * @Describe 跳转到详情页面
      * @param id
-     * @param model
+     * @param modelProject
      * @return
      */
     @GetMapping(value = "/viewDetail/id={id}")
