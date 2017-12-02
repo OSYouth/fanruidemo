@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta charset="UTF-8"/>
+    <title>新建项目</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/style-responsive.css" rel="stylesheet">
+    <link href="/css/demo_page.css" rel="stylesheet" />
+    <link href="/css/demo_table.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/DT_bootstrap.css" />
+
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/style-responsive.css" rel="stylesheet">
+</head>
+<body style="background-color: #7ea8e1">
+<section class="panel">
+    <header class="panel-heading">
+        新建项目
+    </header>
+    <div class="panel-body">
+        <form class="form-horizontal" id="projectForm" role="form">
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">所属区域:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="idRegion" class="form-control" placeholder="idRegion">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">设计编号:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="idProject"  class="form-control" placeholder="idProject">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">设计名称:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="designName" class="form-control" placeholder="designName">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">文本设计费:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="textDesignFee"  class="form-control" placeholder="textDesignFee">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">院挂账设计费:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="hangUpDesignFee" class="form-control" placeholder="hangUpDesignFee">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">审定设计费:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="approvedDesignFee" class="form-control" placeholder="approvedDesignFee">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">差额比对:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="differenceAmount" class="form-control" placeholder="differenceAmount">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">挂账协作比例:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="hangUpRation" class="form-control" placeholder="hangUpRation">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">小计:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="projectSubtotal" class="form-control" placeholder="projectSubtotal">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">管理费:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="manageFee" class="form-control" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">地税:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="landTax" class="form-control" placeholder="">
+                    </div>
+                </div>
+            </div>
+
+            <!--//    private double HangUpSubtotal;    //挂账小计-->
+            <!--//    //后续信息-->
+            <!--//    private double paymentAmount;  //院本次付款金额-->
+            <!--//    private double paymentRation;  //院付款比例-->
+            <!--//    private double actualReceiveAmount;   //实收金额-->
+            <!--//    private double receivableAmount;   //院项目应收余额-->
+            <!--//    private Date paymentTime;  //院付款时间-->
+            <!--//    private double cooperationPaymentAmount;  //协作单位本次付款金额-->
+            <!--//    private double returnedGuaranteee; //归还质保金-->
+            <!--//    private double cooperationPayableAmount;  //协作单位应付余额-->
+            <!--//    private double reachMoneyAmount;  //到账金额（繁睿）-->
+            <!--//    private Date intoAccountTime; //到账时间-->
+            <!--//    private String hangUpBatch;   //院挂账批次-->
+            <!--//    private double paymentBatch;   //付款批次-->
+            <!--//    private String hangOutCompany;    //挂账公司-->
+            <!--//    private boolean isChecked = false; //收款审核，默认未审核-->
+            <!--//    private Date publishedTime;    //出版时间-->
+            <!--//    //实体创建的相关信息-->
+            <!--//    private boolean isDeleted = false; //是否为删除状态，默认为假，后期确定到底需不需要-->
+            <!--//    private Date projectCreateTime;   //项目创建时间-->
+            <!--//    private String userName;   //创建项目的用户-->
+            <!--//    private String addtionalInfo;  //备注-->
+            <div style="text-align :right;">
+                <button id="returnBtn" class="btn btn-success" type="button">返回</button>
+                <button id="saveBtn" class="btn btn-success" type="button">保存</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<!--
+<form method="post">
+    <label for="id">id:</label>
+    <input type="text" name="id" size="5"><br/>
+    <label for="idRegion">所属区域:</label>
+    <input type="text" name="idRegion" size="10"><br/>
+    <label for="idProject">设计编号:</label>
+    <input type="text" name="idProject" size="20"><br/>
+    <label for="designName">设计名称:</label>
+    <textarea name="designName" cols="40" rows="5"></textarea><br/>
+    <label for="textDesignFee">文本设计费:</label>
+    <input type="text" name="textDesignFee" size="10"><br/>
+    <label for="hangUpDesignFee">院挂账设计费:</label>
+    <input type="text" name="hangUpDesignFee" size="10"><br/>
+    <label for="approvedDesignFee">审定设计费:</label>
+    <input type="text" name="approvedDesignFee" size="10"><br/>
+    <label for="differenceAmount">差额比对:</label>
+    <input type="text" name="differenceAmount" size="10"><br/>
+    <label for="hangUpDesignFee">协作单位:</label>
+    <input type="text" name="cooperationUnit" size="10"><br/>
+    <label for="hangUpRation">挂账协作比例:</label>
+    <input type="text" name="hangUpRation" size="10"><br/>
+    <label for="projectSubtotal">小计:</label>
+    <input type="text" name="projectSubtotal" size="10"><br/>
+    <input type="submit"></input>
+</form>-->
+
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/modernizr.min.js"></script>
+<script src="/js/jquery.nicescroll.js"></script>
+
+<!--common scripts for all pages-->
+<script src="/js/scripts.js"></script>
+<script src="/js/addnew.js"></script>
+</body>
+</html>

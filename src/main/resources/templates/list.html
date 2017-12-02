@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta charset="UTF-8"/>
+    <title>项目列表</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/style-responsive.css" rel="stylesheet">
+    <link href="/css/demo_page.css" rel="stylesheet" />
+    <link href="/css/demo_table.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/DT_bootstrap.css" />
+
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/style-responsive.css" rel="stylesheet">
+</head>
+<body style="background-color: #7ea8e1">
+    <hr/>
+    <!-- page heading start-->
+    <div style="text-align: center;">
+        <h3>
+            项目列表
+        </h3>
+    </div>
+    <!-- page heading end-->
+
+    <!--body wrapper start-->
+    <div class="wrapper">
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <div class="panel-body">
+                        <div style="text-align :right;">
+                            <button id="addBtn" class="btn btn-success" type="button">新增项目</button>
+                        </div>
+                        <div class="adv-table">
+                            <table  class="display table table-bordered table-striped" id="dynamic-table" >
+                                <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>所属区域</th>
+                                    <th>设计编号</th>
+                                    <th>设计名称</th>
+                                    <th>文本设计费</th>
+                                    <th>院挂账设计费</th>
+                                    <th>审定设计费</th>
+                                    <th>差额对比</th>
+                                    <th>协作单位</th>
+                                    <th>挂账协作比例</th>
+                                    <th>小计</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <dl th:each="project:${allProjects}">
+                                <tr class="gradeX">
+                                    <td th:text="${project.id}"></td>
+                                    <td th:text="${project.idRegion}"></td>
+                                    <td th:text="${project.idProject}"></td>
+                                    <td th:text="${project.designName}"></td>
+                                    <td th:text="${project.textDesignFee}"></td>
+                                    <td th:text="${project.hangUpDesignFee}"></td>
+                                    <td th:text="${project.approvedDesignFee}"></td>
+                                    <td th:text="${project.differenceAmount}"></td>
+                                    <td th:text="${project.cooperationUnit}"></td>
+                                    <td th:text="${project.hangUpRation}"></td>
+                                    <td th:text="${project.projectSubtotal}"></td>
+                                    <td><button th:id="${project.id}" class="btn btn-success" type="button" th:onclick="'javascript:viewDetail('+${project.id}+')'">详细</button></td>
+                                </tr>
+                                </dl>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/modernizr.min.js"></script>
+    <script src="/js/jquery.nicescroll.js"></script>
+
+    <!--dynamic table-->
+    <script type="text/javascript" language="javascript" src="/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="/js/DT_bootstrap.js"></script>
+    <!--dynamic table initialization -->
+    <script src="/js/dynamic_table_init.js"></script>
+
+    <!--common scripts for all pages-->
+    <script src="/js/scripts.js"></script>
+    <script src="/js/list.js"></script>
+</body>
+</html>
