@@ -22,15 +22,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity httpSecurity) throws Exception{
         httpSecurity
                 .formLogin()
+//                    .loginPage("/login")
                 .and()
-                .authorizeRequests()
-                .anyRequest()
-                .authenticated();
+                    .authorizeRequests()
+                    .anyRequest()
+                    .authenticated();
 //                    .antMatchers("/").access("hasRole('USER')")
 //                    .antMatchers("/**").permitAll()
-//                .and()
-//                .formLogin()
-//                    .loginPage("/login");
     }
 
     @Override
@@ -39,7 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .userDetailsService(new UserDetailsService() {
                     @Override
                     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                        return userRepository.findOne(username);
+                        Integer id = userRepository.findByUserName(username).getId();
+                        return userRepository.findOne(id);
                     }
                 });
     }

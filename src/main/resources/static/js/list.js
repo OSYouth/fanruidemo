@@ -5,6 +5,9 @@ $(function(){
     $("#addBtn").click(function(){
         window.location.href="/project/add";
     });
+    $("#returnHomeBtn").click(function(){
+        window.location.href="/";
+    });
 })
 
 function viewDetail(id){

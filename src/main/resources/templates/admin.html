@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta charset="UTF-8"/>
+    <title>系统用户管理</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/style-responsive.css" rel="stylesheet">
+    <link href="/css/demo_page.css" rel="stylesheet" />
+    <link href="/css/demo_table.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/DT_bootstrap.css" />
+
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/style-responsive.css" rel="stylesheet">
+</head>
+<body style="background-color: #7ea8e1">
+<hr/>
+<!-- page heading start-->
+<div style="text-align: center;">
+    <h3>
+        用户管理
+    </h3>
+</div>
+<!-- page heading end-->
+
+<!--body wrapper start-->
+<div class="wrapper" style="text-align :left;">
+    <div class="row">
+        <div class="col-sm-12">
+            <section class="panel">
+                <div class="panel-body" >
+                    <div class="adv-table">
+                        <table  class="display table table-bordered table-striped" id="dynamic-table" >
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>用户名</th>
+                                <th>创建时间</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <dl th:each="user:${allUsers}">
+                                <tr class="gradeX">
+                                    <td th:text="${user.id}"></td>
+                                    <td th:text="${user.userName}"></td>
+                                    <td th:text="${user.createTime}"></td>
+                                  </tr>
+                            </dl>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<div class="wrapper" style="text-align :right;">
+    <div class="row">
+        <div class="col-sm-12">
+            <section class="panel">
+                <div class="panel-body" >
+                    <form class="form-horizontal" id="userForm" role="form">
+                        <div class="form-group">
+                            <label  class="col-lg-3 col-sm-3 control-label">用户名:</label>
+                            <div class="col-lg-9">
+                                <div class="iconic-input">
+                                    <input type="text" name="userName" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-lg-3 col-sm-3 control-label">用户密码:</label>
+                            <div class="col-lg-9">
+                                <div class="iconic-input">
+                                    <input type="text" name="password"  class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div style="text-align :right;">
+                            <button id="saveBtn" class="btn btn-success" type="button">保存</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/modernizr.min.js"></script>
+<script src="/js/jquery.nicescroll.js"></script>
+
+<!--dynamic table-->
+<script type="text/javascript" language="javascript" src="/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="/js/DT_bootstrap.js"></script>
+<!--dynamic table initialization -->
+<script src="/js/dynamic_table_init.js"></script>
+
+<!--common scripts for all pages-->
+<script src="/js/scripts.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>
