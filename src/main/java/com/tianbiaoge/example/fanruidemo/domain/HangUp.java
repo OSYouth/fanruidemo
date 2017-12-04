@@ -20,6 +20,7 @@ public class HangUp {
     @GeneratedValue
     private Integer id; //Id序号 自增的注解
     private String idProject;  //设计编号,因为设计编号是唯一的，所以作为联系其他表的外键
+    private Integer idTemp; //对应Project表中的id，因为前端页面是根据id来调用的，但是idProject包含非数字符号，会导致前端地址栏显示的时候报错，不知道怎么解决这个问题
     private Integer hangUpTimes = 0;  //挂账次数，默认为0
     private double actualHangUpAmount = 0;   //实际挂账金额，默认值0
     private String invoiceNumber;    //发票号码
@@ -52,6 +53,14 @@ public class HangUp {
 
     public void setIdProject(String idProject) {
         this.idProject = idProject;
+    }
+
+    public Integer getIdTemp() {
+        return idTemp;
+    }
+
+    public void setIdTemp(Integer idTemp) {
+        this.idTemp = idTemp;
     }
 
     public Integer getHangUpTimes() {

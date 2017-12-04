@@ -11,4 +11,7 @@ $(function(){
             }
         });
     })
+    $("#returnHomeBtn").click(function(){
+        window.location.href="/";
+    });
 })

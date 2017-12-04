@@ -16,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -61,20 +62,20 @@ public class ProjectController {
     /**
      * @Describe 跳转到详情页面
      * @param id
-     * @param modelProject
+     * @param model
      * @return
      */
     @GetMapping(value = "/viewDetail/id={id}")
-    public String viewDetail(@PathVariable("id") Integer  id, Model modelProject, Model modelHangUp, Model modelCompanyAccount){
+    public String viewDetail(@PathVariable("id") Integer  id, Model model){
         Project project = iProjectRepository.findById(id);
-        modelProject.addAttribute("projectDetail",project);
+        model.addAttribute("projectDetail",project);
         List<HangUp> hangUpList = iHangUpRepository.findAllByIdProject(project.getIdProject());
         if(hangUpList != null){
-            modelHangUp.addAttribute("allHangUps", hangUpList);
+            model.addAttribute("allHangUps", hangUpList);
         }
         List<CompanyAccount> companyAccountList = iCompanyAccountRepository.findAllByIdProject(project.getIdProject());
         if(companyAccountList != null){
-            modelCompanyAccount.addAttribute("allCompanyAccounts", companyAccountList);
+            model.addAttribute("allCompanyAccounts", companyAccountList);
         }
         return "/detail";
     }
@@ -91,7 +92,7 @@ public class ProjectController {
         if (bindingResult.hasErrors()) {
             return ResultUtil.error(ExceptionConstant.ERROR_CODE, ExceptionConstant.ERROR);
         } else {
-            ;
+            project.setProjectCreateTime(new Date());
             return ResultUtil.success(this.iProjectRepository.save(project));
         }
     }
@@ -108,7 +109,7 @@ public class ProjectController {
         if (bindingResult.hasErrors()) {
             return ResultUtil.error(ExceptionConstant.ERROR_CODE, ExceptionConstant.ERROR);
         } else {
-            ;
+            hangUp.setHangUpCreateTime(new Date());
             return ResultUtil.success(this.iHangUpRepository.save(hangUp));
         }
     }
@@ -124,7 +125,7 @@ public class ProjectController {
         if (bindingResult.hasErrors()) {
             return ResultUtil.error(ExceptionConstant.ERROR_CODE, ExceptionConstant.ERROR);
         } else {
-            ;
+            companyAccount.setCompanyAccountCreateTime(new Date());
             return ResultUtil.success(this.iCompanyAccountRepository.save(companyAccount));
         }
     }

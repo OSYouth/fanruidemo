@@ -5,7 +5,7 @@ $(function(){
     $("#addHangUpBtn").click(function () {
         $.post("/project/saveHangUp",$("#hungUpForm").serialize(),function (data){
             if(data.code==0){
-                window.location.href="/project/viewDetail/id="+data.data.id;
+                window.location.href="/project/viewDetail/id="+data.data.idTemp;
             }else{
                 alert("保存失败！");
             }
@@ -14,7 +14,7 @@ $(function(){
     $("#addCompanyAccountBtn").click(function () {
         $.post("/project/saveCompanyAccount",$("#companyAccountForm").serialize(),function (data){
             if(data.code==0){
-                window.location.href="/project/viewDetail/id="+data.data.id;
+                window.location.href="/project/viewDetail/id="+data.data.idTemp;
             }else{
                 alert("保存失败！");
             }

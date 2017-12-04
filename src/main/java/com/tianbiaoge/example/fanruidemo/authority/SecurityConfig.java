@@ -22,11 +22,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity httpSecurity) throws Exception{
         httpSecurity
                 .formLogin()
+                    .permitAll()
 //                    .loginPage("/login")
                 .and()
+
                     .authorizeRequests()
                     .anyRequest()
-                    .authenticated();
+                    .authenticated()
+                .and()
+                    .rememberMe()//登录后记住用户，下次自动登录,数据库中必须存在名为persistent_logins的表
+                    .tokenValiditySeconds(1209600)
+                    .and().csrf().disable();//跨站防护关闭;
 //                    .antMatchers("/").access("hasRole('USER')")
 //                    .antMatchers("/**").permitAll()
     }
