@@ -22,6 +22,8 @@ public class User implements UserDetails{
 
     private String userName;    //用户名
 
+    private String realName;    //真实姓名
+
     private String password;    //密码
 
     private Date createTime;    //创建用户的时间
@@ -30,6 +32,9 @@ public class User implements UserDetails{
      * @Describe 必须要有一个无参的构造方法
      */
     public User() {
+        this.userName = new String("1001");
+        this.realName = new String("测试");
+        this.password = new String("test");
     }
 
     /**
@@ -51,6 +56,14 @@ public class User implements UserDetails{
         this.userName = userName;
     }
 
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -62,7 +75,7 @@ public class User implements UserDetails{
 
     @Override
     public String getUsername() {
-        return null;
+        return this.getRealName();
     }
 
     @Override

@@ -27,7 +27,7 @@
                 <label  class="col-lg-3 col-sm-3 control-label">所属区域:</label>
                 <div class="col-lg-9">
                     <div class="iconic-input">
-                        <input type="text" name="idRegion" class="form-control" placeholder="idRegion">
+                        <input type="text" name="idRegion" class="form-control" placeholder="">
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                 <label  class="col-lg-3 col-sm-3 control-label">设计编号:</label>
                 <div class="col-lg-9">
                     <div class="iconic-input">
-                        <input type="text" name="idProject"  class="form-control" placeholder="idProject">
+                        <input type="text" name="idProject"  class="form-control" placeholder="">
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                 <label  class="col-lg-3 col-sm-3 control-label">设计名称:</label>
                 <div class="col-lg-9">
                     <div class="iconic-input">
-                        <input type="text" name="designName" class="form-control" placeholder="designName">
+                        <input type="text" name="designName" class="form-control" placeholder="">
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                 <label  class="col-lg-3 col-sm-3 control-label">文本设计费:</label>
                 <div class="col-lg-9">
                     <div class="iconic-input">
-                        <input type="text" name="textDesignFee"  class="form-control" placeholder="textDesignFee">
+                        <input type="text" name="textDesignFee"  class="form-control" placeholder="">
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                 <label  class="col-lg-3 col-sm-3 control-label">院挂账设计费:</label>
                 <div class="col-lg-9">
                     <div class="iconic-input">
-                        <input type="text" name="hangUpDesignFee" class="form-control" placeholder="hangUpDesignFee">
+                        <input type="text" name="hangUpDesignFee" class="form-control" placeholder="">
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                 <label  class="col-lg-3 col-sm-3 control-label">审定设计费:</label>
                 <div class="col-lg-9">
                     <div class="iconic-input">
-                        <input type="text" name="approvedDesignFee" class="form-control" placeholder="approvedDesignFee">
+                        <input type="text" name="approvedDesignFee" class="form-control" placeholder="">
                     </div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                 <label  class="col-lg-3 col-sm-3 control-label">差额比对:</label>
                 <div class="col-lg-9">
                     <div class="iconic-input">
-                        <input type="text" name="differenceAmount" class="form-control" placeholder="differenceAmount">
+                        <input type="text" name="differenceAmount" class="form-control" th:value="0">
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                 <label  class="col-lg-3 col-sm-3 control-label">挂账协作比例:</label>
                 <div class="col-lg-9">
                     <div class="iconic-input">
-                        <input type="text" name="hangUpRation" class="form-control" placeholder="hangUpRation">
+                        <input type="text" name="hangUpRation" class="form-control" th:value="0.58">
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                 <label  class="col-lg-3 col-sm-3 control-label">小计:</label>
                 <div class="col-lg-9">
                     <div class="iconic-input">
-                        <input type="text" name="projectSubtotal" class="form-control" placeholder="projectSubtotal">
+                        <input type="text" name="projectSubtotal" class="form-control" th:value="0">
                     </div>
                 </div>
             </div>
@@ -99,7 +99,7 @@
                 <label  class="col-lg-3 col-sm-3 control-label">管理费:</label>
                 <div class="col-lg-9">
                     <div class="iconic-input">
-                        <input type="text" name="manageFee" class="form-control" placeholder="">
+                        <input type="text" name="manageFee" class="form-control" th:value="0.05">
                     </div>
                 </div>
             </div>
@@ -107,66 +107,164 @@
                 <label  class="col-lg-3 col-sm-3 control-label">地税:</label>
                 <div class="col-lg-9">
                     <div class="iconic-input">
-                        <input type="text" name="landTax" class="form-control" placeholder="">
+                        <input type="text" name="landTax" class="form-control" th:value="0.0094">
+                        <!--<label>%</label>-->
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">挂账小计:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="HangUpSubtotal" class="form-control" th:value="0">
+                    </div>
+                </div>
+            </div>
+            <!-- //后续信息-->
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">院本次付款金额:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="paymentAmount" class="form-control" th:value="0">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">院付款比例:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="paymentRation" class="form-control" th:value="0.8">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">实收金额:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="actualReceiveAmount" class="form-control" th:value="0">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">院项目应收余额:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="receivableAmount" class="form-control" th:value="0">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">院付款时间:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="paymentTime" class="form-control" placeholder="格式:月/日/年  例如：12/30/2001">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">协作单位本次付款金额:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="cooperationPaymentAmount" class="form-control" th:value="0">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">归还质保金:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="returnedGuaranteee" class="form-control" th:value="0">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">协作单位应付余额:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="cooperationPayableAmount" class="form-control" th:value="0">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">到账金额:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="reachMoneyAmount" class="form-control" th:value="0">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">到账时间:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="intoAccountTime" class="form-control" placeholder="格式:月/日/年  例如：12/30/2001">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">院挂账批次:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="hangUpBatch" class="form-control" >
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">付款批次:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="paymentBatch" class="form-control" >
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">挂账公司:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="hangOutCompany" class="form-control" >
+                    </div>
+                </div>
+            </div>
+            <!--<div class="form-group">-->
+                <!--<label  class="col-lg-3 col-sm-3 control-label">收款审核:</label>-->
+                <!--<div class="col-lg-9">-->
+                    <!--<div class="checkbox ">-->
+                        <!--<input type="radio" name="isChecked" class="form-control" th:value="true">审核-->
+                        <!--<input type="radio" name="isChecked" class="form-control" th:value="false" checked>未审核-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">出版时间:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="publishedTime" class="form-control" th:value="2016">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">备注:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="textarea" name="addtionalInfo" cols="30" rows="4" class="form-control" >
                     </div>
                 </div>
             </div>
 
-            <!--//    private double HangUpSubtotal;    //挂账小计-->
-            <!--//    //后续信息-->
-            <!--//    private double paymentAmount;  //院本次付款金额-->
-            <!--//    private double paymentRation;  //院付款比例-->
-            <!--//    private double actualReceiveAmount;   //实收金额-->
-            <!--//    private double receivableAmount;   //院项目应收余额-->
-            <!--//    private Date paymentTime;  //院付款时间-->
-            <!--//    private double cooperationPaymentAmount;  //协作单位本次付款金额-->
-            <!--//    private double returnedGuaranteee; //归还质保金-->
-            <!--//    private double cooperationPayableAmount;  //协作单位应付余额-->
-            <!--//    private double reachMoneyAmount;  //到账金额（繁睿）-->
-            <!--//    private Date intoAccountTime; //到账时间-->
-            <!--//    private String hangUpBatch;   //院挂账批次-->
-            <!--//    private double paymentBatch;   //付款批次-->
-            <!--//    private String hangOutCompany;    //挂账公司-->
-            <!--//    private boolean isChecked = false; //收款审核，默认未审核-->
-            <!--//    private Date publishedTime;    //出版时间-->
-            <!--//    //实体创建的相关信息-->
-            <!--//    private boolean isDeleted = false; //是否为删除状态，默认为假，后期确定到底需不需要-->
-            <!--//    private Date projectCreateTime;   //项目创建时间-->
-            <!--//    private String userName;   //创建项目的用户-->
-            <!--//    private String addtionalInfo;  //备注-->
+            <div class="form-group" hidden="hidden" >
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="userName" class="form-control" th:value="${session.SPRING_SECURITY_CONTEXT.authentication.principal.username}">
+                    </div>
+                </div>
+            </div>
+
             <div style="text-align :right;">
                 <button id="saveBtn" class="btn btn-success" type="button">保存</button>
             </div>
         </form>
     </div>
 </section>
-
-<!--
-<form method="post">
-    <label for="id">id:</label>
-    <input type="text" name="id" size="5"><br/>
-    <label for="idRegion">所属区域:</label>
-    <input type="text" name="idRegion" size="10"><br/>
-    <label for="idProject">设计编号:</label>
-    <input type="text" name="idProject" size="20"><br/>
-    <label for="designName">设计名称:</label>
-    <textarea name="designName" cols="40" rows="5"></textarea><br/>
-    <label for="textDesignFee">文本设计费:</label>
-    <input type="text" name="textDesignFee" size="10"><br/>
-    <label for="hangUpDesignFee">院挂账设计费:</label>
-    <input type="text" name="hangUpDesignFee" size="10"><br/>
-    <label for="approvedDesignFee">审定设计费:</label>
-    <input type="text" name="approvedDesignFee" size="10"><br/>
-    <label for="differenceAmount">差额比对:</label>
-    <input type="text" name="differenceAmount" size="10"><br/>
-    <label for="hangUpDesignFee">协作单位:</label>
-    <input type="text" name="cooperationUnit" size="10"><br/>
-    <label for="hangUpRation">挂账协作比例:</label>
-    <input type="text" name="hangUpRation" size="10"><br/>
-    <label for="projectSubtotal">小计:</label>
-    <input type="text" name="projectSubtotal" size="10"><br/>
-    <input type="submit"></input>
-</form>-->
 
 <script src="/js/jquery-1.10.2.min.js"></script>
 <script src="/js/jquery-ui-1.9.2.custom.min.js"></script>

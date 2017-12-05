@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -48,7 +49,7 @@ public class AdminController {
         if (bindingResult.hasErrors()) {
             return ResultUtil.error(ExceptionConstant.ERROR_CODE, ExceptionConstant.ERROR);
         } else {
-            ;
+            user.setCreateTime(new Date());
             return ResultUtil.success(this.userRepository.save(user));
         }
     }

@@ -3,17 +3,22 @@ spring:
     active: dev
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/fanruidemo
+    url: jdbc:mysql://120.77.200.240:3306/fanruidemo
     username: root
-    password: qwerty
+    password: root
+#    url: jdbc:mysql://127.0.0.1:3306/fanruidemo
+#    username: root
+#    password: qwerty
   jpa:
     database-platform: org.hibernate.dialect.MySQL5Dialect
     hibernate:
       ddl-auto: update
     show-sql: true
   thymeleaf:
-      content-type: text/html
-      cache: false
-      mode: LEGACYHTML5
-      prefix: classpath:/templates
-      suffix: .html
+    content-type: text/html
+    cache: false
+    mode: LEGACYHTML5
+    prefix: classpath:/templates
+    suffix: .html
+  session:
+    store-type: none

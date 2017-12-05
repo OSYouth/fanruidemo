@@ -45,7 +45,7 @@ public class Project {
     private double paymentBatch;   //付款批次
     private String hangOutCompany;    //挂账公司
     private boolean isChecked = false; //收款审核，默认未审核
-    private Date publishedTime;    //出版时间
+    private String publishedTime;    //出版时间
     //实体创建的相关信息
     private boolean isDeleted = false; //是否为删除状态，默认为假，后期确定到底需不需要
     private Date projectCreateTime;   //项目创建时间
@@ -284,11 +284,11 @@ public class Project {
         isChecked = checked;
     }
 
-    public Date getPublishedTime() {
+    public String getPublishedTime() {
         return publishedTime;
     }
 
-    public void setPublishedTime(Date publishedTime) {
+    public void setPublishedTime(String publishedTime) {
         this.publishedTime = publishedTime;
     }
 

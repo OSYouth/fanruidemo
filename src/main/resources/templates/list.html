@@ -9,8 +9,6 @@
     <link href="/css/demo_table.css" rel="stylesheet" />
     <link rel="stylesheet" href="/css/DT_bootstrap.css" />
 
-    <link href="/css/style.css" rel="stylesheet">
-    <link href="/css/style-responsive.css" rel="stylesheet">
 </head>
 <body style="background-color: #7ea8e1">
     <hr/>
@@ -37,7 +35,7 @@
                             <table  class="display table table-bordered table-striped" id="dynamic-table" >
                                 <thead>
                                 <tr>
-                                    <th>序号</th>
+                                    <!--<th>序号</th>-->
                                     <th>所属区域</th>
                                     <th>设计编号</th>
                                     <th>设计名称</th>
@@ -54,7 +52,7 @@
                                 <tbody>
                                 <dl th:each="project:${allProjects}">
                                 <tr class="gradeX">
-                                    <td th:text="${project.id}"></td>
+                                    <!--<td th:text="${project.id}"></td>-->
                                     <td th:text="${project.idRegion}"></td>
                                     <td th:text="${project.idProject}"></td>
                                     <td th:text="${project.designName}"></td>
@@ -86,7 +84,7 @@
     <!--dynamic table-->
     <script type="text/javascript" language="javascript" src="/js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="/js/DT_bootstrap.js"></script>
-    <!--dynamic table initialization -->
+    <!--&lt;!&ndash;dynamic table initialization &ndash;&gt;-->
     <script src="/js/dynamic_table_init.js"></script>
 
     <!--common scripts for all pages-->
