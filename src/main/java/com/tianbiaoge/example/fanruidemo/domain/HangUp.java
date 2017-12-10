@@ -23,9 +23,9 @@ public class HangUp {
     private Integer idTemp; //对应Project表中的id，因为前端页面是根据id来调用的，但是idProject包含非数字符号，会导致前端地址栏显示的时候报错，不知道怎么解决这个问题
     private Integer hangUpTimes = 0;  //挂账次数，默认为0
     private double actualHangUpAmount = 0;   //实际挂账金额，默认值0
-    private String invoiceNumber;    //发票号码
-    private double invoiceAmount; //发票金额
-    private Date invoiceTime; //发票时间（datetime		DEFAULT '2001-01-01',）
+    private String hangUpInvoiceNumber;    //发票号码
+    private double hangUpInvoiceAmount; //发票金额
+    private Date hangUpInvoiceTime; //发票时间（datetime		DEFAULT '2001-01-01',）
 
     private Date hangUpCreateTime;   //挂账创建时间（datetime 	DEFAULT CURRENT_TIMESTAMP,）
     private String userName;   //创建挂账的用户
@@ -79,28 +79,28 @@ public class HangUp {
         this.actualHangUpAmount = actualHangUpAmount;
     }
 
-    public String getInvoiceNumber() {
-        return invoiceNumber;
+    public String getHangUpInvoiceNumber() {
+        return hangUpInvoiceNumber;
     }
 
-    public void setInvoiceNumber(String invoiceNumber) {
-        this.invoiceNumber = invoiceNumber;
+    public void setHangUpInvoiceNumber(String hangUpInvoiceNumber) {
+        this.hangUpInvoiceNumber = hangUpInvoiceNumber;
     }
 
-    public double getInvoiceAmount() {
-        return invoiceAmount;
+    public double getHangUpInvoiceAmount() {
+        return hangUpInvoiceAmount;
     }
 
-    public void setInvoiceAmount(double invoiceAmount) {
-        this.invoiceAmount = invoiceAmount;
+    public void setHangUpInvoiceAmount(double hangUpInvoiceAmount) {
+        this.hangUpInvoiceAmount = hangUpInvoiceAmount;
     }
 
-    public Date getInvoiceTime() {
-        return invoiceTime;
+    public Date getHangUpInvoiceTime() {
+        return hangUpInvoiceTime;
     }
 
-    public void setInvoiceTime(Date invoiceTime) {
-        this.invoiceTime = invoiceTime;
+    public void setHangUpInvoiceTime(Date hangUpInvoiceTime) {
+        this.hangUpInvoiceTime = hangUpInvoiceTime;
     }
 
     public Date getHangUpCreateTime() {

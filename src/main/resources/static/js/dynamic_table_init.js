@@ -13,7 +13,9 @@ function fnFormatDetails ( oTable, nTr )
 $(document).ready(function() {
 
     $('#dynamic-table').dataTable( {
-        "aaSorting": [[ 4, "desc" ]]
+        "aaSorting": [[ 0, "asc" ]]
+    //    desc 降序
+    //    asc 升序
     } );
 
     /*

@@ -22,9 +22,9 @@ public class CompanyAccount {
     private String idProject;  //设计编号,因为设计编号是唯一的，所以作为联系其他表的外键
     private Integer idTemp; //对应Project表中的id，因为前端页面是根据id来调用的，但是idProject包含非数字符号，会导致前端地址栏显示的时候报错，不知道怎么解决这个问题
     private Integer accountTimes = 0;  //挂账次数，默认为0
-    private String invoiceNumber;    //发票号码
-    private double invoiceAmount; //发票金额
-    private Date invoiceTime; //发票时间（datetime		DEFAULT '2001-01-01',）
+    private String companyAccountInvoiceNumber;    //发票号码
+    private double companyAccountInvoiceAmount; //发票金额
+    private Date companyAccountInvoiceTime; //发票时间（datetime		DEFAULT '2001-01-01',）
 
     private Date companyAccountCreateTime;   //公司走账创建时间（datetime 	DEFAULT CURRENT_TIMESTAMP,）
     private String userName;   //创建公司走账的用户
@@ -71,28 +71,29 @@ public class CompanyAccount {
         this.accountTimes = accountTimes;
     }
 
-    public String getInvoiceNumber() {
-        return invoiceNumber;
+
+    public String getCompanyAccountInvoiceNumber() {
+        return companyAccountInvoiceNumber;
     }
 
-    public void setInvoiceNumber(String invoiceNumber) {
-        this.invoiceNumber = invoiceNumber;
+    public void setCompanyAccountInvoiceNumber(String companyAccountInvoiceNumber) {
+        this.companyAccountInvoiceNumber = companyAccountInvoiceNumber;
     }
 
-    public double getInvoiceAmount() {
-        return invoiceAmount;
+    public double getCompanyAccountInvoiceAmount() {
+        return companyAccountInvoiceAmount;
     }
 
-    public void setInvoiceAmount(double invoiceAmount) {
-        this.invoiceAmount = invoiceAmount;
+    public void setCompanyAccountInvoiceAmount(double companyAccountInvoiceAmount) {
+        this.companyAccountInvoiceAmount = companyAccountInvoiceAmount;
     }
 
-    public Date getInvoiceTime() {
-        return invoiceTime;
+    public Date getCompanyAccountInvoiceTime() {
+        return companyAccountInvoiceTime;
     }
 
-    public void setInvoiceTime(Date invoiceTime) {
-        this.invoiceTime = invoiceTime;
+    public void setCompanyAccountInvoiceTime(Date companyAccountInvoiceTime) {
+        this.companyAccountInvoiceTime = companyAccountInvoiceTime;
     }
 
     public Date getCompanyAccountCreateTime() {

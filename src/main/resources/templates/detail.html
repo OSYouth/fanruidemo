@@ -87,9 +87,9 @@
                     <tr class="gradeX">
                         <td th:text="${hangUp.hangUpTimes}"></td>
                         <td th:text="${hangUp.actualHangUpAmount}"></td>
-                        <td th:text="${hangUp.invoiceNumber}"></td>
-                        <td th:text="${hangUp.invoiceAmount}"></td>
-                        <td th:text="${hangUp.invoiceTime}"></td>
+                        <td th:text="${hangUp.hangUpInvoiceNumber}"></td>
+                        <td th:text="${hangUp.hangUpInvoiceAmount}"></td>
+                        <td th:text="${hangUp.hangUpInvoiceTime}"></td>
                         <td th:text="${hangUp.userName}"></td>
                     </tr>
                 </dl>
@@ -108,7 +108,7 @@
                 <div class="form-group">
                     <div class="col-lg-9" hidden="hidden">
                         <div class="iconic-input">
-                            <input type="text" name="idTemp" class="form-control" th:value = "${projectDetail.id}">
+                            <input type="text" id="idTemp" name="idTemp" class="form-control" th:value = "${projectDetail.id}">
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,8 @@
                     <label  class="col-lg-3 col-sm-3 control-label">次数(<=5):</label>
                     <div class="col-lg-9">
                         <div class="iconic-input">
-                            <input type="text" name="hangUpTimes" class="form-control" th:value="${allHangUps.size()+1}">
+                            <input type="text" id="hangUpTimes" name="hangUpTimes" class="form-control" th:value="${allHangUps.size()+1}" onchange="checkIsLessThanFive(this.name)">
+                            <span id="hangUpTimesMsg"></span>
                         </div>
                     </div>
                 </div>
@@ -124,7 +125,8 @@
                     <label  class="col-lg-3 col-sm-3 control-label">实际挂账金额:</label>
                     <div class="col-lg-9">
                         <div class="iconic-input">
-                            <input type="text" name="actualHangUpAmount"  class="form-control" placeholder="">
+                            <input type="text" id="actualHangUpAmount" name="actualHangUpAmount"  class="form-control" onchange="checkActualHangUpAmount(this.name)">
+                            <span id="actualHangUpAmountMsg"></span>
                         </div>
                     </div>
                 </div>
@@ -132,7 +134,7 @@
                     <label  class="col-lg-3 col-sm-3 control-label">发票号码:</label>
                     <div class="col-lg-9">
                         <div class="iconic-input">
-                            <input type="text" name="invoiceNumber" class="form-control" placeholder="">
+                            <input type="text" name="hangUpInvoiceNumber" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -140,7 +142,8 @@
                     <label  class="col-lg-3 col-sm-3 control-label">发票金额:</label>
                     <div class="col-lg-9">
                         <div class="iconic-input">
-                            <input type="text" name="invoiceAmount"  class="form-control" placeholder="">
+                            <input type="text" id="hangUpInvoiceAmount" name="hangUpInvoiceAmount"  class="form-control" value="" onchange="checkIsNumber(this.name)">
+                            <span id="hangUpInvoiceAmountMsg"></span>
                         </div>
                     </div>
                 </div>
@@ -148,7 +151,7 @@
                     <label  class="col-lg-3 col-sm-3 control-label">发票时间:</label>
                     <div class="col-lg-9">
                         <div class="iconic-input">
-                            <input type="text" name="invoiceTime" class="form-control" placeholder="格式:月/日/年  例如：12/30/2001">
+                            <input type="text" name="hangUpInvoiceTime" class="form-control" placeholder="格式: 月/日/年  例如：12/30/2001">
                         </div>
                     </div>
                 </div>
@@ -187,9 +190,9 @@
                 <dl th:each="companyAccount:${allCompanyAccounts}">
                     <tr class="gradeX">
                         <td th:text="${companyAccount.accountTimes}"></td>
-                        <td th:text="${companyAccount.invoiceNumber}"></td>
-                        <td th:text="${companyAccount.invoiceAmount}"></td>
-                        <td th:text="${companyAccount.invoiceTime}"></td>
+                        <td th:text="${companyAccount.companyAccountInvoiceNumber}"></td>
+                        <td th:text="${companyAccount.companyAccountInvoiceAmount}"></td>
+                        <td th:text="${companyAccount.companyAccountInvoiceTime}"></td>
                         <td th:text="${companyAccount.userName}"></td>
                     </tr>
                 </dl>
@@ -201,7 +204,7 @@
                 <div class="form-group">
                     <div class="col-lg-9" hidden="hidden">
                         <div class="iconic-input">
-                            <input type="text" name="idProject" class="form-control" th:value = "${projectDetail.idProject}">
+                            <input type="text" name="idProject" class="form-control" th:value="${projectDetail.idProject}">
                         </div>
                     </div>
                 </div>
@@ -216,7 +219,8 @@
                     <label  class="col-lg-3 col-sm-3 control-label">次数(<=5):</label>
                     <div class="col-lg-9">
                         <div class="iconic-input">
-                            <input type="text" name="accountTimes" class="form-control" th:value="${allCompanyAccounts.size()+1}">
+                            <input type="text" id="accountTimes" name="accountTimes" class="form-control" th:value="${allCompanyAccounts.size()+1}" onchange="checkIsLessThanFive(this.name)">
+                            <span id="accountTimesMsg"></span>
                         </div>
                     </div>
                 </div>
@@ -224,15 +228,17 @@
                     <label  class="col-lg-3 col-sm-3 control-label">发票号码:</label>
                     <div class="col-lg-9">
                         <div class="iconic-input">
-                            <input type="text" name="invoiceNumber" class="form-control" placeholder="">
+                            <input type="text" id="companyAccountInvoiceNumber" name="companyAccountInvoiceNumber" class="form-control" >
+                            <span id="companyAccountInvoiceNumberMsg"></span>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label  class="col-lg-3 col-sm-3 control-label">发票金额:</label>
                     <div class="col-lg-9">
-                        <div class="iconic-input">
-                            <input type="text" name="invoiceAmount"  class="form-control" placeholder="">
+                        <div class="iconic-input" >
+                            <input type="text" id="companyAccountInvoiceAmount" name="companyAccountInvoiceAmount"  class="form-control" onchange="checkIsNumber(this.name)">
+                            <span id="companyAccountInvoiceAmountMsg"></span>
                         </div>
                     </div>
                 </div>
@@ -240,7 +246,8 @@
                     <label  class="col-lg-3 col-sm-3 control-label">发票时间:</label>
                     <div class="col-lg-9">
                         <div class="iconic-input">
-                            <input type="text" name="invoiceTime" class="form-control" placeholder="格式:月/日/年  例如：12/30/2001">
+                            <input type="text" id="companyAccountInvoiceTime" name="companyAccountInvoiceTime" class="form-control" placeholder="格式: 月/日/年  例如：12/30/2001">
+                            <span id="companyAccountInvoiceTimeMsg"></span>
                         </div>
                     </div>
                 </div>
@@ -270,5 +277,6 @@
 <!--common scripts for all pages-->
 <script src="/js/scripts.js"></script>
 <script src="/js/detail.js"></script>
+<script src="/js/check.js"></script>
 </body>
 </html>
