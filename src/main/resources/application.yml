@@ -3,12 +3,12 @@ spring:
     active: dev
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://120.77.200.240:3306/fanruidemo
-    username: root
-    password: root
-#    url: jdbc:mysql://127.0.0.1:3306/fanruidemo
+#    url: jdbc:mysql://120.77.200.240:3306/fanruidemo
 #    username: root
-#    password: qwerty
+#    password: root
+    url: jdbc:mysql://127.0.0.1:3306/fanruidemo
+    username: root
+    password: qwerty
   jpa:
     database-platform: org.hibernate.dialect.MySQL5Dialect
     hibernate:

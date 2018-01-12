@@ -12,7 +12,16 @@ $(function(){
         });
     })
     $("#addCompanyAccountBtn").click(function () {
-        $.post("/project/saveCompanyAccount",$("#companyAccountForm").serialize(),function (data){
+        $.post("/project/saveCompanyAccount"+data.data.id,$("#companyAccountForm").serialize(),function (data){
+            if(data.code==0){
+                window.location.href="/project/viewDetail/id="+data.data.idTemp;
+            }else{
+                alert("保存失败！");
+            }
+        });
+    })
+    $("#deleteHangUpBtn").click(function () {
+        $.post("/project/deleteHangUp/id=" + id,function (data){
             if(data.code==0){
                 window.location.href="/project/viewDetail/id="+data.data.idTemp;
             }else{
@@ -24,7 +33,9 @@ $(function(){
         window.location.href="/project/list";
     })
 })
-
+// function deleteHangUp(id){
+//     window.location.href="/project/deleteHangUp/id=" + id;
+// }
 /**
  * @Describe 设计用来放到提交环节，如果返回值不为真就提交不了
  * @returns {checkIsNumber|checkIsLessThanFive}
@@ -73,12 +84,14 @@ function checkIsLessThanFive(String) {
     return checkIsLessThanFive;
 }
 
+/**
+ * @Describe 输入完以后发票金额同步到一个数字，并且有检测是不是数字的功能
+ * @param String
+ */
 function checkActualHangUpAmount(String) {
-    debugger;
-    var t = document.getElementById(String).value;
-    // var data = t.value.toUpperCase();
-    $("#hangUpInvoiceAmount").val(t);
-
-    //document.getElementById(hangUpInvoiceAmount).value = t.value;
+    // debugger;
+    var data = document.getElementById(String).value;
+    // $("#hangUpInvoiceAmount").val(data);
+    document.getElementById("hangUpInvoiceAmount").value=data;
     checkIsNumber(String);
 }

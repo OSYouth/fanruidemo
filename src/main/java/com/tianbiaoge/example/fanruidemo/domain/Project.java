@@ -1,8 +1,13 @@
 package com.tianbiaoge.example.fanruidemo.domain;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Past;
 import java.util.Date;
 
 /**
@@ -16,41 +21,66 @@ public class Project {
     @Id
     @GeneratedValue //Id序号 自增的注解
     private Integer id;
+    @NotBlank(message = "所属区域不能为空")
     private String idRegion;   //所属区域
+    @NotBlank(message = "设计编号不能为空")
     private String idProject;  //设计编号
+    @NotBlank(message = "设计名称不能为空")
     private String designName; //设计名称
+    @Digits(integer = 6, fraction = 4)
     private double textDesignFee; //文本设计费
+    @Digits(integer = 6, fraction = 4)
     private double hangUpDesignFee; //院挂账设计费
+    @Digits(integer = 6, fraction = 4)
     private double approvedDesignFee; //审定设计费
+    @Digits(integer = 6, fraction = 4)
     private double differenceAmount;   //差额比对=院挂账设计费-审定设计费
+    @NotBlank(message = "协作单位不能为空")
     private String cooperationUnit;    //协作单位
+    @Digits(integer = 6, fraction = 4)
     private double hangUpRation;  //挂账协作比例
+    @Digits(integer = 6, fraction = 4)
     private double projectSubtotal;    //小计
     //挂账后应有信息
+    @Digits(integer = 6, fraction = 4)
     private double manageFee;  //管理费
+    @Digits(integer = 6, fraction = 4)
     private double landTax	;   //地税
+    @Digits(integer = 6, fraction = 4)
     private double hangUpSubtotal;    //挂账小计
     //后续信息
+    @Digits(integer = 6, fraction = 4)
     private double paymentAmount;  //院本次付款金额
+    @Digits(integer = 6, fraction = 4)
     private double paymentRation;  //院付款比例
+    @Digits(integer = 6, fraction = 4)
     private double actualReceiveAmount;   //实收金额
+    @Digits(integer = 6, fraction = 4)
     private double receivableAmount;   //院项目应收余额
+    @Past
     private Date paymentTime;  //院付款时间
+    @Digits(integer = 6, fraction = 4)
     private double cooperationPaymentAmount;  //协作单位本次付款金额
-    private double returnedGuaranteee; //归还质保金
+    @Digits(integer = 6, fraction = 4)
+    private double returnedGuarantee; //归还质保金
+    @Digits(integer = 6, fraction = 4)
     private double cooperationPayableAmount;  //协作单位应付余额
+    @Digits(integer = 6, fraction = 4)
     private double reachMoneyAmount;  //到账金额（繁睿）
+    @Past
     private Date intoAccountTime; //到账时间
+    @NotBlank(message = "院挂账批次不能为空")
     private String hangUpBatch;   //院挂账批次
+    @Digits(integer = 6, fraction = 4)
     private double paymentBatch;   //付款批次
+    @NotBlank(message = "挂账公司不能为空")
     private String hangOutCompany;    //挂账公司
     private boolean isChecked = false; //收款审核，默认未审核
     private String publishedTime;    //出版时间
     //实体创建的相关信息
-    private boolean isDeleted = false; //是否为删除状态，默认为假，后期确定到底需不需要
     private Date projectCreateTime;   //项目创建时间
     private String userName;   //创建项目的用户
-    private String addtionalInfo;  //备注
+    private String additionalInfo;  //备注
     /**
      * @Describe 必须要有一个无参的构造方法
      */
@@ -220,12 +250,12 @@ public class Project {
         this.cooperationPaymentAmount = cooperationPaymentAmount;
     }
 
-    public double getReturnedGuaranteee() {
-        return returnedGuaranteee;
+    public double getReturnedGuarantee() {
+        return returnedGuarantee;
     }
 
-    public void setReturnedGuaranteee(double returnedGuaranteee) {
-        this.returnedGuaranteee = returnedGuaranteee;
+    public void setReturnedGuarantee(double returnedGuarantee) {
+        this.returnedGuarantee = returnedGuarantee;
     }
 
     public double getCooperationPayableAmount() {
@@ -292,14 +322,6 @@ public class Project {
         this.publishedTime = publishedTime;
     }
 
-    public boolean isDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
-    }
-
     public Date getProjectCreateTime() {
         return projectCreateTime;
     }
@@ -316,11 +338,11 @@ public class Project {
         this.userName = userName;
     }
 
-    public String getAddtionalInfo() {
-        return addtionalInfo;
+    public String getAdditionalInfo() {
+        return additionalInfo;
     }
 
-    public void setAddtionalInfo(String addtionalInfo) {
-        this.addtionalInfo = addtionalInfo;
+    public void setAdditionalInfo(String additionalInfo) {
+        this.additionalInfo = additionalInfo;
     }
 }

@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/project")
+@RequestMapping("/project")
 public class ProjectController {
     @Autowired
     private IProjectRepository iProjectRepository;
@@ -41,7 +41,7 @@ public class ProjectController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @GetMapping("/list")
     public String projectList(Model model){
         List<Project> projectList = iProjectRepository.findAll();
         if(projectList != null){
@@ -54,7 +54,7 @@ public class ProjectController {
      * @Describe 跳转到addnew.html
      * @return
      */
-    @GetMapping(value = "/add")
+    @GetMapping("/add")
     public String add(){
         return "/addnew";
     }
@@ -65,7 +65,7 @@ public class ProjectController {
      * @param model
      * @return
      */
-    @GetMapping(value = "/viewDetail/id={id}")
+    @GetMapping("/viewDetail/id={id}")
     public String viewDetail(@PathVariable("id") Integer  id, Model model){
         Project project = iProjectRepository.findById(id);
         model.addAttribute("projectDetail",project);
@@ -113,6 +113,17 @@ public class ProjectController {
             return ResultUtil.success(this.iHangUpRepository.save(hangUp));
         }
     }
+
+    /**
+     * @Describe 删除挂账记录
+     * @param id
+     */
+    @DeleteMapping("/deleteHangUp/{id}")
+    @ResponseBody
+    public void deleteHangUp(@PathVariable Integer id){
+        this.iHangUpRepository.delete(id);
+        System.out.println(id);
+    }
     /**
      * @Describe 用来反应添加挂账成功与否的信息
      * @param companyAccount
@@ -128,6 +139,19 @@ public class ProjectController {
             companyAccount.setCompanyAccountCreateTime(new Date());
             return ResultUtil.success(this.iCompanyAccountRepository.save(companyAccount));
         }
+    }
+
+    /**
+     * @Describe 删除走账记录
+     * @param id
+//     * @param hangUp
+//     * @param bindingResult
+     */
+    @DeleteMapping("/deleteCompanyAccount/{id}")
+    @ResponseBody
+    public void deleteCompanyAccount(@PathVariable Integer id){
+        this.iCompanyAccountRepository.delete(id);
+//        System.out.println(id);
     }
 //    这部分已经通过前端实现了
 // 查询设计名称中的部分关键字跳转或者说是刷新该页面

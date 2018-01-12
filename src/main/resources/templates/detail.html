@@ -62,6 +62,100 @@
                     <span th:text="${projectDetail.projectSubtotal}"></span>
                 </div>
             </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3 form-group">
+                    <label  class="control-label">管理费:</label>
+                    <span th:text="${projectDetail.manageFee}"></span>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label  class="control-label">地税:</label>
+                    <span th:text="${projectDetail.landTax}"></span>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label  class="control-label">挂账小计:</label>
+                    <span th:text="${projectDetail.hangUpSubtotal}"></span>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3 form-group">
+                    <label  class="control-label">院本次付款金额:</label>
+                    <span th:text="${projectDetail.paymentAmount}"></span>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label  class="control-label">院付款比例:</label>
+                    <span th:text="${projectDetail.paymentRation}"></span>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label  class="control-label">实收金额:</label>
+                    <span th:text="${projectDetail.actualReceiveAmount}"></span>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label  class="control-label">院项目应收余额:</label>
+                    <span th:text="${projectDetail.receivableAmount}"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 form-group">
+                    <label  class="control-label">院付款时间:</label>
+                    <span th:text="${projectDetail.paymentTime}"></span>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label  class="control-label">协作单位本次付款金额:</label>
+                    <span th:text="${projectDetail.cooperationPaymentAmount}"></span>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label  class="control-label">归还质保金:</label>
+                    <span th:text="${projectDetail.returnedGuarantee}"></span>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label  class="control-label">协作单位应付余额:</label>
+                    <span th:text="${projectDetail.cooperationPayableAmount}"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 form-group">
+                    <label  class="control-label">到账金额（繁睿）:</label>
+                    <span th:text="${projectDetail.reachMoneyAmount}"></span>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label  class="control-label">到账时间:</label>
+                    <span th:text="${projectDetail.intoAccountTime}"></span>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label  class="control-label">院挂账批次:</label>
+                    <span th:text="${projectDetail.hangUpBatch}"></span>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label  class="control-label">付款批次:</label>
+                    <span th:text="${projectDetail.paymentBatch}"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 form-group">
+                    <label  class="control-label">挂账公司:</label>
+                    <span th:text="${projectDetail.hangOutCompany}"></span>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label  class="control-label">出版时间:</label>
+                    <span th:text="${projectDetail.publishedTime}"></span>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label  class="control-label">项目创建时间:</label>
+                    <span th:text="${projectDetail.projectCreateTime}"></span>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label  class="control-label">创建项目的用户:</label>
+                    <span th:text="${projectDetail.userName}"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 form-group">
+                    <label  class="control-label">备注:</label>
+                    <span th:text="${projectDetail.additionalInfo}"></span>
+                </div>
+            </div>
         </form>
     </div>
 </section>
@@ -80,6 +174,7 @@
                     <th>发票金额</th>
                     <th>发票时间</th>
                     <th>经手人</th>
+                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -91,6 +186,7 @@
                         <td th:text="${hangUp.hangUpInvoiceAmount}"></td>
                         <td th:text="${hangUp.hangUpInvoiceTime}"></td>
                         <td th:text="${hangUp.userName}"></td>
+                        <td><button th:id="deleteHangUpBtn" class="btn btn-success" type="button" th:onclick="'javascript:deleteHangUp('+${hangUp.id}+')'">删除</button></td>
                     </tr>
                 </dl>
                 </tbody>
@@ -184,6 +280,7 @@
                     <th>发票金额</th>
                     <th>发票时间</th>
                     <th>经手人</th>
+                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -194,6 +291,7 @@
                         <td th:text="${companyAccount.companyAccountInvoiceAmount}"></td>
                         <td th:text="${companyAccount.companyAccountInvoiceTime}"></td>
                         <td th:text="${companyAccount.userName}"></td>
+                        <td><button th:id="deleteCompanyAccountBtn" class="btn btn-fail" type="button" th:onclick="'javascript:deleteCompanyAccount('+${companyAccount.id}+')'">删除</button></td>
                     </tr>
                 </dl>
                 </tbody>

@@ -13,3 +13,9 @@ $(function(){
 function viewDetail(id){
     window.location.href="/project/viewDetail/id=" + id;
 }
+function updateProject(id){
+    window.location.href="/project/viewDetail/id=" + id;
+}
+function deleteProjet(id){
+    window.location.href="/project/viewDetail/id=" + id;
+}
