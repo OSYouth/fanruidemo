@@ -12,16 +12,7 @@ $(function(){
         });
     })
     $("#addCompanyAccountBtn").click(function () {
-        $.post("/project/saveCompanyAccount"+data.data.id,$("#companyAccountForm").serialize(),function (data){
-            if(data.code==0){
-                window.location.href="/project/viewDetail/id="+data.data.idTemp;
-            }else{
-                alert("保存失败！");
-            }
-        });
-    })
-    $("#deleteHangUpBtn").click(function () {
-        $.post("/project/deleteHangUp/id=" + id,function (data){
+        $.post("/project/saveCompanyAccount",$("#companyAccountForm").serialize(),function (data){
             if(data.code==0){
                 window.location.href="/project/viewDetail/id="+data.data.idTemp;
             }else{
@@ -33,9 +24,43 @@ $(function(){
         window.location.href="/project/list";
     })
 })
-// function deleteHangUp(id){
-//     window.location.href="/project/deleteHangUp/id=" + id;
-// }
+
+function deleteHangUp(id,idTemp){
+    // window.location.href="/project/deleteHangUp/id=" + id;
+    $.ajax({
+        type: 'DELETE',
+        url: "/project/deleteHangUp/id="+id,
+        // data: {"id":id},
+        success: function(data){
+            // debugger;
+            if ('success' == data){
+                alert("删除成功");
+                window.location.href="/project/viewDetail/id="+idTemp;
+            } else {
+                alert('删除失败');
+            }
+        }
+    });
+}
+
+function deleteCompanyAccount(id,idTemp){
+    // window.location.href="/project/deleteCompanyAccount/id=" + id;
+    $.ajax({
+        type: 'DELETE',
+        url: "/project/deleteCompanyAccount/id="+id,
+        // data: {"id":id},
+        success: function(data){
+            // debugger;
+            if ('success' == data){
+                alert("删除成功");
+                window.location.href="/project/viewDetail/id="+idTemp;
+            } else {
+                alert('删除失败');
+            }
+        }
+    });
+}
+
 /**
  * @Describe 设计用来放到提交环节，如果返回值不为真就提交不了
  * @returns {checkIsNumber|checkIsLessThanFive}

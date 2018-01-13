@@ -18,7 +18,7 @@
 </div>
 <!-- page heading end-->
 <div style="text-align :left;">
-    <button id="returnBtn" class="btn btn-success" type="button">返回</button>
+    <button id="returnBtn" class="btn btn-success" type="button">返回首页</button>
 </div>
 <section class="panel" data-collapsed="0">
     <header class="panel-heading">
@@ -99,7 +99,7 @@
             <div class="row">
                 <div class="col-md-3 form-group">
                     <label  class="control-label">院付款时间:</label>
-                    <span th:text="${projectDetail.paymentTime}"></span>
+                    <span th:text="${#dates.format(projectDetail.paymentTime, 'yyyy-MM-dd')}"></span>
                 </div>
                 <div class="col-md-3 form-group">
                     <label  class="control-label">协作单位本次付款金额:</label>
@@ -121,7 +121,7 @@
                 </div>
                 <div class="col-md-3 form-group">
                     <label  class="control-label">到账时间:</label>
-                    <span th:text="${projectDetail.intoAccountTime}"></span>
+                    <span th:text="${#dates.format(projectDetail.intoAccountTime, 'yyyy-MM-dd')}"></span>
                 </div>
                 <div class="col-md-3 form-group">
                     <label  class="control-label">院挂账批次:</label>
@@ -186,7 +186,7 @@
                         <td th:text="${hangUp.hangUpInvoiceAmount}"></td>
                         <td th:text="${hangUp.hangUpInvoiceTime}"></td>
                         <td th:text="${hangUp.userName}"></td>
-                        <td><button th:id="deleteHangUpBtn" class="btn btn-success" type="button" th:onclick="'javascript:deleteHangUp('+${hangUp.id}+')'">删除</button></td>
+                        <td><button th:id="deleteHangUpBtn" class="btn btn-success" type="button" th:onclick="'javascript:deleteHangUp('+${hangUp.id}+','+${projectDetail.id}+')'">删除</button></td>
                     </tr>
                 </dl>
                 </tbody>
@@ -291,7 +291,7 @@
                         <td th:text="${companyAccount.companyAccountInvoiceAmount}"></td>
                         <td th:text="${companyAccount.companyAccountInvoiceTime}"></td>
                         <td th:text="${companyAccount.userName}"></td>
-                        <td><button th:id="deleteCompanyAccountBtn" class="btn btn-fail" type="button" th:onclick="'javascript:deleteCompanyAccount('+${companyAccount.id}+')'">删除</button></td>
+                        <td><button th:id="deleteCompanyAccountBtn" class="btn btn-fail" type="button" th:onclick="'javascript:deleteCompanyAccount('+${companyAccount.id}+','+${projectDetail.id}+')'">删除</button></td>
                     </tr>
                 </dl>
                 </tbody>

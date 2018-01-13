@@ -35,14 +35,14 @@ public class ProjectControllerTest {
 
     @Test
     public void whenDeleteHangUpSuccess() throws Exception{
-        mockMvc.perform(delete("/project/deleteHangUp/1")
+        mockMvc.perform(delete("/project/deleteHangUp/id=1")
                 .contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(status().isOk());
     }
 
     @Test
     public void whenDeleteCompanyAccountSuccess() throws Exception{
-        mockMvc.perform(delete("/project/deleteCompanyAccount/2")
+        mockMvc.perform(delete("/project/deleteCompanyAccount/id=2")
                 .contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(status().isOk());
     }

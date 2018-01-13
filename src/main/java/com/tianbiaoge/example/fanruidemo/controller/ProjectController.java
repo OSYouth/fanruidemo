@@ -60,6 +60,69 @@ public class ProjectController {
     }
 
     /**
+     * @Describe 用来反应添加项目成功与否的信息
+     * @param project
+     * @param bindingResult
+     * @return
+     */
+    @PostMapping("/saveProject")
+    @ResponseBody
+    public Result saveProject(@Valid Project project, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            return ResultUtil.error(ExceptionConstant.ERROR_CODE, ExceptionConstant.ERROR);
+        } else {
+            project.setProjectCreateTime(new Date());
+            return ResultUtil.success(this.iProjectRepository.save(project));
+        }
+    }
+
+    /**
+     * @Describe 跳转到修改页面
+     * @param id
+     * @param model
+     * @return
+     */
+    @GetMapping("/updateProject/id={id}")
+    public String updateProject(@PathVariable("id") Integer  id, Model model){
+        Project project = iProjectRepository.findById(id);
+        model.addAttribute("projectDetail",project);
+        return "/update";
+    }
+
+    /**
+     * @Describe 用来反应修改项目成功与否的信息
+     * @param project
+     * @param bindingResult
+     * @return
+     */
+    @PostMapping("/updateProject")
+    @ResponseBody
+    public Result updateProject(@Valid Project project, BindingResult bindingResult){
+         if (bindingResult.hasErrors()) {
+            return ResultUtil.error(ExceptionConstant.ERROR_CODE, ExceptionConstant.ERROR);
+        } else {
+            project.setProjectCreateTime(new Date());
+            return ResultUtil.success(this.iProjectRepository.save(project));
+        }
+    }
+
+    /**
+     * @Describe 删除一个项目
+     * @param id
+     */
+    @DeleteMapping("/deleteProject/id={id}")
+    @ResponseBody
+    public String deleteProject(@PathVariable Integer id){
+        this.iProjectRepository.delete(id);
+//        想同时批量删除idTemp=id的HangUp和CompanyAccount
+//        this.iHangUpRepository.deleteInBatch();
+//        this.iCompanyAccountRepository.delete(id);
+        System.out.println(id);
+        return "success";
+//        return "/list";
+    }
+
+    /**
      * @Describe 跳转到详情页面
      * @param id
      * @param model
@@ -78,23 +141,6 @@ public class ProjectController {
             model.addAttribute("allCompanyAccounts", companyAccountList);
         }
         return "/detail";
-    }
-
-    /**
-     * @Describe 用来反应添加项目成功与否的信息
-     * @param project
-     * @param bindingResult
-     * @return
-     */
-    @PostMapping("/saveProject")
-    @ResponseBody
-    public Result saveProject(@Valid Project project, BindingResult bindingResult){
-        if (bindingResult.hasErrors()) {
-            return ResultUtil.error(ExceptionConstant.ERROR_CODE, ExceptionConstant.ERROR);
-        } else {
-            project.setProjectCreateTime(new Date());
-            return ResultUtil.success(this.iProjectRepository.save(project));
-        }
     }
 
     /**
@@ -118,12 +164,14 @@ public class ProjectController {
      * @Describe 删除挂账记录
      * @param id
      */
-    @DeleteMapping("/deleteHangUp/{id}")
+    @DeleteMapping("/deleteHangUp/id={id}")
     @ResponseBody
-    public void deleteHangUp(@PathVariable Integer id){
+    public String deleteHangUp(@PathVariable Integer id){
         this.iHangUpRepository.delete(id);
         System.out.println(id);
+        return "success";
     }
+
     /**
      * @Describe 用来反应添加挂账成功与否的信息
      * @param companyAccount
@@ -144,14 +192,13 @@ public class ProjectController {
     /**
      * @Describe 删除走账记录
      * @param id
-//     * @param hangUp
-//     * @param bindingResult
      */
-    @DeleteMapping("/deleteCompanyAccount/{id}")
+    @DeleteMapping("/deleteCompanyAccount/id={id}")
     @ResponseBody
-    public void deleteCompanyAccount(@PathVariable Integer id){
+    public String deleteCompanyAccount(@PathVariable Integer id){
         this.iCompanyAccountRepository.delete(id);
-//        System.out.println(id);
+        System.out.println("ca " + id + "删除成功");
+        return "success";
     }
 //    这部分已经通过前端实现了
 // 查询设计名称中的部分关键字跳转或者说是刷新该页面

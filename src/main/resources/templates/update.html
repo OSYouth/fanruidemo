@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta charset="UTF-8"/>
+    <title>修改项目</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/style-responsive.css" rel="stylesheet">
+</head>
+<body style="background-color: #7ea8e1">
+<hr/>
+<div style="text-align: center;">
+    <h3>
+        修改项目
+    </h3>
+</div>
+<section class="panel">
+    <div style="text-align :right;">
+        <button id="returnBtn" class="btn btn-success" type="button">返回</button>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" id="updateProjectForm" role="form">
+            <div class="form-group" hidden="hidden" >
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="id" class="form-control" th:value="${projectDetail.id}">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">所属区域:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="idRegion" name="idRegion" class="form-control" th:value="${projectDetail.idRegion}">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">设计编号:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="idProject" name="idProject"  class="form-control" th:value="${projectDetail.idProject}">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">设计名称:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="designName" name="designName" class="form-control" th:value="${projectDetail.designName}">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">文本设计费:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="textDesignFee" name="textDesignFee" class="form-control" th:value="${projectDetail.textDesignFee}" onchange="checkTextDesignFee(this.name)">
+                        <span id="textDesignFeeMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">院挂账设计费:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="hangUpDesignFee" name="hangUpDesignFee" class="form-control" th:value="${projectDetail.hangUpDesignFee}" onchange="checkIsNumber(this.name)">
+                        <span id="hangUpDesignFeeMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">审定设计费:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="approvedDesignFee" name="approvedDesignFee" class="form-control" th:value="${projectDetail.approvedDesignFee}" onchange="checkApprovedDesignFee(this.name)">
+                        <span id="approvedDesignMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">差额比对:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="differenceAmount" name="differenceAmount" class="form-control" th:value="${projectDetail.differenceAmount}" onchange="checkIsNumber(this.name)">
+                        <span id="differenceAmountMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">协作单位:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="cooperationUnit" name="cooperationUnit" th:value="${projectDetail.cooperationUnit}" class="form-control">
+                        <span id="cooperationUnitMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">挂账协作比例(%):</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="hangUpRation" name="hangUpRation" class="form-control" th:value="${projectDetail.hangUpRation}" onchange="checkHangUpRation(this.name)">
+                        <span id="hangUpRationMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">小计:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="projectSubtotal" name="projectSubtotal" class="form-control" th:value="${projectDetail.projectSubtotal}" onchange="checkIsNumber(this.name)">
+                        <span id="projectSubtotalMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">管理费(%):</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="manageFee" name="manageFee" class="form-control" th:value="${projectDetail.manageFee}" onchange="checkIsNumber(this.name)">
+                        <span id="manageFeeMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">地税(%):</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="landTax" name="landTax" class="form-control" th:value="${projectDetail.landTax}" onchange="checkLandTax(this.name)">
+                        <span id="landTaxMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">挂账小计:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="hangUpSubtotal" name="hangUpSubtotal" th:value="${projectDetail.hangUpSubtotal}" onchange="checkIsNumber(this.name)">
+                        <span id="hangUpSubtotalMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- //后续信息-->
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">院本次付款金额:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="paymentAmount" name="paymentAmount" class="form-control" th:value="${projectDetail.paymentAmount}" onchange="checkIsNumber(this.name)">
+                        <span id="paymentAmountMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">院付款比例(%):</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="paymentRation" name="paymentRation" class="form-control" th:value="${projectDetail.paymentRation}" onchange="checkIsNumber(this.name)">
+                        <span id="paymentRationMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">实收金额:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="actualReceiveAmount" name="actualReceiveAmount" class="form-control" th:value="${projectDetail.actualReceiveAmount}"  onchange="checkIsNumber(this.name)">
+                        <span id="actualReceiveAmountMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">院项目应收余额:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="receivableAmount" name="receivableAmount" class="form-control"  th:value="${projectDetail.receivableAmount}" onchange="checkIsNumber(this.name)">
+                        <span id="receivableAmountMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">院付款时间:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="paymentTime" name="paymentTime" class="form-control" th:value="${#dates.format(projectDetail.paymentTime, 'MM/dd/yyyy')}">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">协作单位本次付款金额:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="cooperationPaymentAmount" name="cooperationPaymentAmount" class="form-control" th:value="${projectDetail.cooperationPaymentAmount}" onchange="checkIsNumber(this.name)">
+                        <span id="cooperationPaymentAmountMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">归还质保金:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="returnedGuarantee" name="returnedGuarantee" class="form-control" th:value="${projectDetail.returnedGuarantee}" onchange="checkIsNumber(this.name)">
+                        <span id="returnedGuaranteeMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">协作单位应付余额:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="cooperationPayableAmount" name="cooperationPayableAmount" class="form-control" th:value="${projectDetail.cooperationPayableAmount}" onchange="checkIsNumber(this.name)">
+                        <span id="cooperationPayableAmountMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">到账金额:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="reachMoneyAmount" name="reachMoneyAmount" class="form-control" th:value="${projectDetail.reachMoneyAmount}" onchange="checkIsNumber(this.name)">
+                        <span id="reachMoneyAmountMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">到账时间:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="intoAccountTime" name="intoAccountTime" class="form-control" th:value="${#dates.format(projectDetail.intoAccountTime, 'MM/dd/yyyy')}" >
+                        <span id="intoAccountTimeMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">院挂账批次:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="hangUpBatch" name="hangUpBatch" class="form-control" th:value="${projectDetail.hangUpBatch}">
+                        <span id="hangUpBatchMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">付款批次:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="paymentBatch" name="paymentBatch" class="form-control" th:value="${projectDetail.paymentBatch}">
+                        <span id="paymentBatchMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">挂账公司:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text"  id="hangOutCompany" name="hangOutCompany" class="form-control" th:value="${projectDetail.hangOutCompany}" >
+                        <span id="hangOutCompanyMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">出版时间:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" id="publishedTime"  name="publishedTime" class="form-control" th:value="${projectDetail.publishedTime}">
+                        <span id="publishedTimeMsg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-lg-3 col-sm-3 control-label">备注:</label>
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="textarea" id="additionalInfo" name="additionalInfo" cols="30" rows="4" class="form-control" th:value="${projectDetail.additionalInfo}" >
+                        <span id="additionalInfoMsg"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" hidden="hidden" >
+                <div class="col-lg-9">
+                    <div class="iconic-input">
+                        <input type="text" name="userName" class="form-control" th:value="${session.SPRING_SECURITY_CONTEXT.authentication.principal.username}">
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align :right;">
+                <button id="saveBtn" class="btn btn-success" type="button">保存</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/modernizr.min.js"></script>
+<script src="/js/jquery.nicescroll.js"></script>
+
+<!--common scripts for all pages-->
+<script src="/js/scripts.js"></script>
+<script src="/js/updateProject.js"></script>
+</body>
+</html>
