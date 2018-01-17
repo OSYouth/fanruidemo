@@ -5,7 +5,7 @@
 
 	<groupId>com.tianbiaoge.example</groupId>
 	<artifactId>fanruidemo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>V1.0</version>
 	<packaging>jar</packaging>
 
 	<name>fanruidemo</name>

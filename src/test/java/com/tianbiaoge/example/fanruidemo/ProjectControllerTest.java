@@ -34,17 +34,25 @@ public class ProjectControllerTest {
     }
 
     @Test
-    public void whenDeleteHangUpSuccess() throws Exception{
-        mockMvc.perform(delete("/project/deleteHangUp/id=1")
+    public void whenQuerySuccess() throws Exception{
+        mockMvc.perform(get("/project/list")
                 .contentType(MediaType.APPLICATION_JSON_UTF8))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
     }
 
-    @Test
-    public void whenDeleteCompanyAccountSuccess() throws Exception{
-        mockMvc.perform(delete("/project/deleteCompanyAccount/id=2")
-                .contentType(MediaType.APPLICATION_JSON_UTF8))
-                .andExpect(status().isOk());
-    }
+//    @Test
+//    public void whenDeleteHangUpSuccess() throws Exception{
+//        mockMvc.perform(delete("/project/deleteHangUp/id=1")
+//                .contentType(MediaType.APPLICATION_JSON_UTF8))
+//                .andExpect(status().isOk());
+//    }
+
+//    @Test
+//    public void whenDeleteCompanyAccountSuccess() throws Exception{
+//        mockMvc.perform(delete("/project/deleteCompanyAccount/id=2")
+//                .contentType(MediaType.APPLICATION_JSON_UTF8))
+//                .andExpect(status().isOk());
+//    }
 
 }
